@@ -8,7 +8,7 @@ module.exports = {
   devtool: 'cheap-module-eval-source-map',
   entry: [
     'webpack-hot-middleware/client',
-    './src/index',
+    './src/app/index.js',
   ],
   output: {
     path: path.join(__dirname, 'dist'),
@@ -21,7 +21,7 @@ module.exports = {
     new webpack.NoErrorsPlugin(),
     new HtmlWebpackPlugin({
       filename: 'index.html',
-      template: 'src/index.html',
+      template: './src/index.html',
       inject: true,
     }),
   ],
