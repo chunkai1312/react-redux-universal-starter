@@ -1,0 +1,7 @@
+@import "~react-toolbox/lib/globals";
+
+@media screen and (min-width: $layout-breakpoint-md) {
+  .appMenuButton {
+    display: none;
+  }
+}
