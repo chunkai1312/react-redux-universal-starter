@@ -3,13 +3,11 @@
 import React, { Component, PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import Increment from '../../components/Increment';
-import Decrement from '../../components/Decrement';
-import Display from '../../components/Display';
+import Counter from '../../components/Counter';
 import * as CounterActions from '../../actions/CounterActions';
 
 const propTypes = {
-  counter: PropTypes.object.isRequired,
+  counter: PropTypes.number.isRequired,
   actions: PropTypes.object.isRequired,
 };
 
@@ -17,10 +15,7 @@ class Home extends Component {
   render() {
     return (
       <div>
-        <div>Home</div>
-        <Increment actions={this.props.actions} />
-        <Decrement actions={this.props.actions} />
-        <Display counter={this.props.counter} />
+        <Counter counter={this.props.counter} actions={this.props.actions} />
       </div>
     );
   }

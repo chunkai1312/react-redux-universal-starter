@@ -1,16 +1,14 @@
-import { INCREMENT, DECREMENT } from '../constants/ActionTypes';
+import { COUNTER_INCREMENT, COUNTER_DECREMENT } from '../constants/ActionTypes';
 
-const initialState = {
-  num: 0,
-};
+const initialState = 0;
 
 export default function (state = initialState, action) {
   switch (action.type) {
-    case INCREMENT:
-      return Object.assign({}, state, { num: state.num + 1 });
+    case COUNTER_INCREMENT:
+      return state + 1;
 
-    case DECREMENT:
-      return Object.assign({}, state, { num: state.num - 1 });
+    case COUNTER_DECREMENT:
+      return state - 1;
 
     default:
       return state;

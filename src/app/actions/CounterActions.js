@@ -1,9 +1,9 @@
-import { INCREMENT, DECREMENT } from '../constants/ActionTypes';
+import { COUNTER_INCREMENT, COUNTER_DECREMENT } from '../constants/ActionTypes';
 
 export function increment() {
-  return { type: INCREMENT };
+  return { type: COUNTER_INCREMENT };
 }
 
 export function decrement() {
-  return { type: DECREMENT };
+  return { type: COUNTER_DECREMENT };
 }
