@@ -1,5 +1,9 @@
-import { TOGGLE_NAV_DRAWER } from '../constants/ActionTypes';
+import { APP_BAR_TITLE_CHANGE, NAV_DRAWER_TOGGLE } from '../constants/ActionTypes';
+
+export function changeAppBarTitle(title) {
+  return { type: APP_BAR_TITLE_CHANGE, title };
+}
 
 export function toggleNavDrawer() {
-  return { type: TOGGLE_NAV_DRAWER };
+  return { type: NAV_DRAWER_TOGGLE };
 }
