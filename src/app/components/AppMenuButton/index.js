@@ -1,3 +1,3 @@
-import AppMenuButton from './AppMenuButton';
+import AppMenuButton from './AppMenuButton'
 
-export default AppMenuButton;
+export default AppMenuButton

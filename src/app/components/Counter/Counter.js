@@ -1,37 +1,37 @@
-import React, { Component, PropTypes } from 'react';
-import { Button } from 'react-toolbox';
-
-const propTypes = {
-  counter: PropTypes.number.isRequired,
-  actions: PropTypes.object.isRequired,
-};
+import React, { Component, PropTypes } from 'react'
+import { Button } from 'react-toolbox'
 
 class Counter extends Component {
-  constructor(props) {
-    super(props);
-    this.handleIncrement = this.handleIncrement.bind(this);
-    this.handleDecrement = this.handleDecrement.bind(this);
+  constructor (props) {
+    super(props)
+    this.handleIncrement = this.handleIncrement.bind(this)
+    this.handleDecrement = this.handleDecrement.bind(this)
   }
 
-  handleIncrement() {
-    this.props.actions.increment();
+  handleIncrement () {
+    this.props.increment()
   }
 
-  handleDecrement() {
-    this.props.actions.decrement();
+  handleDecrement () {
+    this.props.decrement()
   }
 
-  render() {
+  render () {
+    const { counter } = this.props
     return (
       <div>
-        <p>Counter: { this.props.counter }</p>
+        <p>Counter: { counter }</p>
         <Button icon="add" label="Increment" primary onClick={this.handleIncrement} />
         <Button icon="add" label="Decrement" accent onClick={this.handleDecrement} />
       </div>
-    );
+    )
   }
 }
 
-Counter.propTypes = propTypes;
+Counter.propTypes = {
+  counter: PropTypes.number.isRequired,
+  increment: PropTypes.func.isRequired,
+  decrement: PropTypes.func.isRequired
+}
 
-export default Counter;
+export default Counter
