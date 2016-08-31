@@ -5,6 +5,7 @@
   "scripts": {
     "start": "cross-env NODE_ENV=production node server.js",
     "dev": "cross-env NODE_ENV=development node server.js",
+    "lint": "eslint server.js src",
     "build": "npm run clean && webpack --config webpack.config.js --progress",
     "clean": "rimraf dist"
   },
