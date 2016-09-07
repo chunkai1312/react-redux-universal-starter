@@ -1,20 +1,21 @@
 import React, { Component, PropTypes } from 'react'
+import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { Counter } from '../components'
-import * as actions from '../actions/application'
-import * as counter from '../actions/counter'
+import * as AppActions from '../actions/application'
+import * as CounterActions from '../actions/counter'
 
 class HomePage extends Component {
 
   componentWillMount () {
-    this.props.setPageTitle('Home')
+    this.props.actions.setPageTitle('Home')
   }
 
   render () {
-    const { counter, increment, decrement } = this.props
+    const { counter, actions } = this.props
     return (
       <div>
-        <Counter counter={counter} increment={increment} decrement={decrement} />
+        <Counter counter={counter} increment={actions.increment} decrement={actions.decrement} />
       </div>
     )
   }
@@ -23,9 +24,7 @@ class HomePage extends Component {
 HomePage.propTypes = {
   application: PropTypes.object.isRequired,
   counter: PropTypes.number.isRequired,
-  setPageTitle: PropTypes.func.isRequired,
-  increment: PropTypes.func.isRequired,
-  decrement: PropTypes.func.isRequired
+  actions: PropTypes.object.isRequired
 }
 
 const mapStateToProps = (state) => ({
@@ -33,8 +32,8 @@ const mapStateToProps = (state) => ({
   counter: state.counter
 })
 
-export default connect(mapStateToProps, {
-  setPageTitle: actions.setPageTitle,
-  increment: counter.increment,
-  decrement: counter.decrement
-})(HomePage)
+const mapDispatchToProps = (dispatch) => ({
+  actions: bindActionCreators(Object.assign({}, AppActions, CounterActions), dispatch)
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(HomePage)

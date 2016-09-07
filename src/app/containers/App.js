@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react'
+import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { NavDrawer, Panel, AppBar, List, ListItem } from 'react-toolbox'
 import { AppLayout, AppMenuButton } from '../components'
@@ -20,7 +21,7 @@ class App extends Component {
   }
 
   handleToggleNavDrawer () {
-    this.props.toggleNavDrawer()
+    this.props.actions.toggleNavDrawer()
   }
 
   handleChangeRoute (path) {
@@ -59,7 +60,7 @@ class App extends Component {
 
 App.propTypes = {
   application: PropTypes.object.isRequired,
-  toggleNavDrawer: PropTypes.func.isRequired,
+  actions: PropTypes.object.isRequired,
   children: PropTypes.node
 }
 
@@ -67,8 +68,12 @@ App.contextTypes = {
   router: React.PropTypes.object
 }
 
-const mapStateToProps = (state) => ({ application: state.application })
+const mapStateToProps = (state) => ({
+  application: state.application
+})
 
-export default connect(mapStateToProps, {
-  toggleNavDrawer: actions.toggleNavDrawer
-})(App)
+const mapDispatchToProps = (dispatch) => ({
+  actions: bindActionCreators(actions, dispatch)
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(App)
