@@ -1,9 +1,9 @@
 import React, { Component, PropTypes } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import * as actions from '../actions/application'
+import * as actions from '../../actions/application'
 
-class AboutPage extends Component {
+class AboutView extends Component {
 
   componentWillMount () {
     this.props.actions.setPageTitle('About')
@@ -18,7 +18,7 @@ class AboutPage extends Component {
   }
 }
 
-AboutPage.propTypes = {
+AboutView.propTypes = {
   application: PropTypes.object.isRequired,
   actions: PropTypes.object.isRequired
 }
@@ -31,4 +31,4 @@ const mapDispatchToProps = (dispatch) => ({
   actions: bindActionCreators(actions, dispatch)
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(AboutPage)
+export default connect(mapStateToProps, mapDispatchToProps)(AboutView)

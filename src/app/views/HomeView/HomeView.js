@@ -1,11 +1,11 @@
 import React, { Component, PropTypes } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { Counter } from '../components'
-import * as AppActions from '../actions/application'
-import * as CounterActions from '../actions/counter'
+import { Counter } from '../../components'
+import * as AppActions from '../../actions/application'
+import * as CounterActions from '../../actions/counter'
 
-class HomePage extends Component {
+class HomeView extends Component {
 
   componentWillMount () {
     this.props.actions.setPageTitle('Home')
@@ -21,7 +21,7 @@ class HomePage extends Component {
   }
 }
 
-HomePage.propTypes = {
+HomeView.propTypes = {
   application: PropTypes.object.isRequired,
   counter: PropTypes.number.isRequired,
   actions: PropTypes.object.isRequired
@@ -36,4 +36,4 @@ const mapDispatchToProps = (dispatch) => ({
   actions: bindActionCreators(Object.assign({}, AppActions, CounterActions), dispatch)
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(HomePage)
+export default connect(mapStateToProps, mapDispatchToProps)(HomeView)
