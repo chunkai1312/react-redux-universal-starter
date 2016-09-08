@@ -1,3 +1,4 @@
+import { handleActions } from 'redux-actions'
 import { TOGGLE_NAV_DRAWER, SET_PAGE_TITLE } from '../constants/ActionTypes'
 
 const initialState = {
@@ -8,16 +9,7 @@ const initialState = {
   }
 }
 
-export default function (state = initialState, action) {
-  switch (action.type) {
-
-    case TOGGLE_NAV_DRAWER:
-      return Object.assign({}, state, { navDrawer: { active: !state.navDrawer.active } })
-
-    case SET_PAGE_TITLE:
-      return Object.assign({}, state, { pageTitle: action.pageTitle })
-
-    default:
-      return state
-  }
-}
+export default handleActions({
+  [TOGGLE_NAV_DRAWER]: (state, action) => Object.assign({}, state, { navDrawer: { active: !state.navDrawer.active } }),
+  [SET_PAGE_TITLE]: (state, action) => Object.assign({}, state, { pageTitle: action.payload })
+}, initialState)
