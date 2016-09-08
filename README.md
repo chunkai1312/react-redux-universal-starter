@@ -6,7 +6,9 @@
 
 - [x] [React](https://facebook.github.io/react/)
 - [x] [Redux](https://github.com/reactjs/redux)
+- [x] [React Router](https://github.com/reactjs/react-router)
 - [x] [React Router Redux](https://github.com/reactjs/react-router-redux)
+- [x] [React Saga](https://github.com/yelouafi/redux-saga)
 - [x] [React Toolbox](https://github.com/react-toolbox/react-toolbox)
 
 ## Usage
