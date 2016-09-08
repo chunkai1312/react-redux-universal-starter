@@ -6,6 +6,11 @@ import * as AppActions from '../../actions/application'
 import * as CounterActions from '../../actions/counter'
 
 class HomeView extends Component {
+  static propTypes = {
+    application: PropTypes.object.isRequired,
+    counter: PropTypes.number.isRequired,
+    actions: PropTypes.object.isRequired
+  }
 
   componentWillMount () {
     this.props.actions.setPageTitle('Home')
@@ -19,12 +24,6 @@ class HomeView extends Component {
       </div>
     )
   }
-}
-
-HomeView.propTypes = {
-  application: PropTypes.object.isRequired,
-  counter: PropTypes.number.isRequired,
-  actions: PropTypes.object.isRequired
 }
 
 const mapStateToProps = (state) => ({

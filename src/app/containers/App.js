@@ -6,6 +6,16 @@ import { AppLayout, AppMenuButton } from '../components'
 import * as actions from '../actions/application'
 
 class App extends Component {
+  static contextTypes = {
+    router: React.PropTypes.object
+  }
+
+  static propTypes = {
+    application: PropTypes.object.isRequired,
+    actions: PropTypes.object.isRequired,
+    children: PropTypes.node
+  }
+
   constructor (props) {
     super(props)
     this.handleToggleNavDrawer = this.handleToggleNavDrawer.bind(this)
@@ -56,16 +66,6 @@ class App extends Component {
       </AppLayout>
     )
   }
-}
-
-App.propTypes = {
-  application: PropTypes.object.isRequired,
-  actions: PropTypes.object.isRequired,
-  children: PropTypes.node
-}
-
-App.contextTypes = {
-  router: React.PropTypes.object
 }
 
 const mapStateToProps = (state) => ({

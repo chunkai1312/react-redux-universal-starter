@@ -3,7 +3,12 @@ import { Provider } from 'react-redux'
 import routes from '../routes'
 import { Router } from 'react-router'
 
-export default class Root extends Component {
+class Root extends Component {
+  static propTypes = {
+    store: PropTypes.object.isRequired,
+    history: PropTypes.object.isRequired
+  }
+
   render () {
     const { store, history } = this.props
     return (
@@ -14,7 +19,4 @@ export default class Root extends Component {
   }
 }
 
-Root.propTypes = {
-  store: PropTypes.object.isRequired,
-  history: PropTypes.object.isRequired
-}
+export default Root

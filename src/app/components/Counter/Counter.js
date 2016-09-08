@@ -2,6 +2,12 @@ import React, { Component, PropTypes } from 'react'
 import { Button } from 'react-toolbox'
 
 class Counter extends Component {
+  static propTypes = {
+    counter: PropTypes.number.isRequired,
+    increment: PropTypes.func.isRequired,
+    decrement: PropTypes.func.isRequired
+  }
+
   constructor (props) {
     super(props)
     this.handleIncrement = this.handleIncrement.bind(this)
@@ -26,12 +32,6 @@ class Counter extends Component {
       </div>
     )
   }
-}
-
-Counter.propTypes = {
-  counter: PropTypes.number.isRequired,
-  increment: PropTypes.func.isRequired,
-  decrement: PropTypes.func.isRequired
 }
 
 export default Counter

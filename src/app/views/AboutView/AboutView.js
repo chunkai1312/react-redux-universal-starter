@@ -4,6 +4,10 @@ import { connect } from 'react-redux'
 import * as actions from '../../actions/application'
 
 class AboutView extends Component {
+  static propTypes = {
+    application: PropTypes.object.isRequired,
+    actions: PropTypes.object.isRequired
+  }
 
   componentWillMount () {
     this.props.actions.setPageTitle('About')
@@ -16,11 +20,6 @@ class AboutView extends Component {
       </div>
     )
   }
-}
-
-AboutView.propTypes = {
-  application: PropTypes.object.isRequired,
-  actions: PropTypes.object.isRequired
 }
 
 const mapStateToProps = (state) => ({
