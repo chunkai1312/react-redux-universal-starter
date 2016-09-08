@@ -20,7 +20,12 @@ class HomeView extends Component {
     const { counter, actions } = this.props
     return (
       <div>
-        <Counter counter={counter} increment={actions.increment} decrement={actions.decrement} />
+        <Counter
+          counter={counter}
+          increment={actions.increment}
+          decrement={actions.decrement}
+          incrementAsync={actions.incrementAsync}
+        />
       </div>
     )
   }
