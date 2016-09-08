@@ -1,17 +1,22 @@
 import { createStore, applyMiddleware } from 'redux'
-import { logger } from '../middlewares'
+import createSagaMiddleware from 'redux-saga'
 import rootReducer from '../reducers'
+import rootSaga from '../sagas'
 
 export default function configureStore (preloadedState) {
   const create = window.devToolsExtension
     ? window.devToolsExtension()(createStore)
     : createStore
 
+  const sagaMiddleware = createSagaMiddleware()
+
   const createStoreWithMiddleware = applyMiddleware(
-    logger
+    sagaMiddleware
   )(create)
 
   const store = createStoreWithMiddleware(rootReducer, preloadedState)
+
+  sagaMiddleware.run(rootSaga)
 
   if (module.hot) {
     module.hot.accept('../reducers', () => {
