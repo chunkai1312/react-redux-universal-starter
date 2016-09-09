@@ -10,6 +10,7 @@
 - [x] [React Router Redux](https://github.com/reactjs/react-router-redux)
 - [x] [React Saga](https://github.com/yelouafi/redux-saga)
 - [x] [React Toolbox](https://github.com/react-toolbox/react-toolbox)
+- [x] [Redux DevTools Extension](https://github.com/zalmoxisus/redux-devtools-extension)
 
 ## Usage
 
