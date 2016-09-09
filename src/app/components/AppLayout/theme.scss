@@ -8,10 +8,15 @@
 
   .navDrawer {
 
-   .drawerContent {
-      border-right: 0px solid #e0e0e0;
+    .drawerContent {
+      border-right: 0;
+      background-color: $color-white
     }
 
+  }
+
+  .panel {
+    background-color: $palette-grey-50
   }
 
 }
