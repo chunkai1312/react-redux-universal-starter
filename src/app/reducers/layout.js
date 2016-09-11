@@ -2,9 +2,9 @@ import { handleActions } from 'redux-actions'
 import { TOGGLE_NAV_DRAWER, SET_PAGE_TITLE } from '../constants/ActionTypes'
 
 const initialState = {
-  name: 'React App Boilerplate',
+  appName: 'React App Boilerplate',
   pageTitle: 'Home',
-  navDrawer: {
+  isNavDrawerActive: {
     active: false
   }
 }

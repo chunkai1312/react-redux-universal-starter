@@ -2,8 +2,8 @@ import React, { Component, PropTypes } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { Counter } from '../../components'
-import * as AppActions from '../../actions/application'
-import * as CounterActions from '../../actions/counter'
+import * as layoutActions from '../../actions/layout'
+import * as counterActions from '../../actions/counter'
 
 class HomeView extends Component {
   static propTypes = {
@@ -32,12 +32,12 @@ class HomeView extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  application: state.application,
+  layout: state.layout,
   counter: state.counter
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  actions: bindActionCreators(Object.assign({}, AppActions, CounterActions), dispatch)
+  actions: bindActionCreators(Object.assign({}, layoutActions, counterActions), dispatch)
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomeView)

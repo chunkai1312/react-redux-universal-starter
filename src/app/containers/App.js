@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { NavDrawer, Panel, AppBar, List, ListItem } from 'react-toolbox'
 import { AppLayout, AppMenuButton } from '../components'
-import * as actions from '../actions/application'
+import * as actions from '../actions/layout'
 
 class App extends Component {
   static contextTypes = {
@@ -11,7 +11,7 @@ class App extends Component {
   }
 
   static propTypes = {
-    application: PropTypes.object.isRequired,
+    layout: PropTypes.object.isRequired,
     actions: PropTypes.object.isRequired,
     children: PropTypes.node
   }
@@ -39,12 +39,12 @@ class App extends Component {
   }
 
   render () {
-    const { application, children } = this.props
+    const { layout, children } = this.props
     return (
       <AppLayout>
-        <NavDrawer active={application.navDrawer.active} permanentAt="md" onOverlayClick={this.handleToggleNavDrawer}>
+        <NavDrawer active={layout.isNavDrawerActive} permanentAt="md" onOverlayClick={this.handleToggleNavDrawer}>
           <div>
-            <AppBar>{application.name}</AppBar>
+            <AppBar>{layout.appName}</AppBar>
             <List selectable ripple>
               {this.menuItems.map((item, i) =>
                 <ListItem key={i} caption={item.name} leftIcon={item.icon} onClick={this.handleChangeRoute[i]} />
@@ -56,7 +56,7 @@ class App extends Component {
           <div>
             <AppBar>
               <AppMenuButton icon="menu" inverse onClick={this.handleToggleNavDrawer} />
-              {application.pageTitle}
+              {layout.pageTitle}
             </AppBar>
             <div style={{ flex: 1, overflowY: 'auto', padding: '2.4rem' }}>
               {children}
@@ -69,7 +69,7 @@ class App extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  application: state.application
+  layout: state.layout
 })
 
 const mapDispatchToProps = (dispatch) => ({
