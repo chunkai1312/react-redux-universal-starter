@@ -43,8 +43,8 @@ class App extends Component {
     return (
       <AppLayout>
         <NavDrawer active={layout.isNavDrawerActive} permanentAt="md" onOverlayClick={this.handleToggleNavDrawer}>
-          <div>
-            <AppBar>{layout.appName}</AppBar>
+          <AppBar>{layout.appName}</AppBar>
+          <div style={{ flex: 1, overflowY: 'auto' }}>
             <List selectable ripple>
               {this.menuItems.map((item, i) =>
                 <ListItem key={i} caption={item.name} leftIcon={item.icon} onClick={this.handleChangeRoute[i]} />
@@ -53,14 +53,12 @@ class App extends Component {
           </div>
         </NavDrawer>
         <Panel>
-          <div>
-            <AppBar>
-              <AppMenuButton icon="menu" inverse onClick={this.handleToggleNavDrawer} />
-              {layout.pageTitle}
-            </AppBar>
-            <div style={{ flex: 1, overflowY: 'auto', padding: '2.4rem' }}>
-              {children}
-            </div>
+          <AppBar>
+            <AppMenuButton icon="menu" inverse onClick={this.handleToggleNavDrawer} />
+            {layout.pageTitle}
+          </AppBar>
+          <div style={{ flex: 1, overflowY: 'auto' }}>
+            {children}
           </div>
         </Panel>
       </AppLayout>

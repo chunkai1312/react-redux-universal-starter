@@ -7,7 +7,7 @@ import * as counterActions from '../../actions/counter'
 
 class HomeView extends Component {
   static propTypes = {
-    application: PropTypes.object.isRequired,
+    layout: PropTypes.object.isRequired,
     counter: PropTypes.number.isRequired,
     actions: PropTypes.object.isRequired
   }
@@ -19,7 +19,7 @@ class HomeView extends Component {
   render () {
     const { counter, actions } = this.props
     return (
-      <div>
+      <div style={{ padding: '2.4rem' }}>
         <Counter
           counter={counter}
           increment={actions.increment}

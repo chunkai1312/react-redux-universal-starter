@@ -5,7 +5,7 @@ import * as actions from '../../actions/layout'
 
 class AboutView extends Component {
   static propTypes = {
-    application: PropTypes.object.isRequired,
+    layout: PropTypes.object.isRequired,
     actions: PropTypes.object.isRequired
   }
 
@@ -15,7 +15,7 @@ class AboutView extends Component {
 
   render () {
     return (
-      <div>
+      <div style={{ padding: '2.4rem' }}>
         About
       </div>
     )
