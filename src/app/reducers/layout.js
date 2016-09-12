@@ -8,6 +8,6 @@ const initialState = {
 }
 
 export default handleActions({
-  [TOGGLE_NAV_DRAWER]: (state, action) => Object.assign({}, state, { isNavDrawerActive: !state.isNavDrawerActive }),
-  [SET_PAGE_TITLE]: (state, action) => Object.assign({}, state, { pageTitle: action.payload })
+  [TOGGLE_NAV_DRAWER]: (state, action) => ({ ...state, isNavDrawerActive: !state.isNavDrawerActive }),
+  [SET_PAGE_TITLE]: (state, action) => ({ ...state, pageTitle: action.payload })
 }, initialState)
