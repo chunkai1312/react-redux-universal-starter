@@ -19,14 +19,8 @@ class App extends Component {
   constructor (props) {
     super(props)
     this.handleToggleNavDrawer = this.handleToggleNavDrawer.bind(this)
-
-    this.menuItems = [
-      { name: 'Home', icon: 'home', path: '/' },
-      { name: 'About', icon: 'info', path: '/about' }
-    ]
-
-    this.menuItems.forEach((item, i) => {
-      this.handleChangeRoute[i] = this.handleChangeRoute.bind(this, item.path)
+    props.layout.menuItems.forEach((menuItem, i) => {
+      this.handleMenuItemClick[i] = this.handleMenuItemClick.bind(this, menuItem)
     })
   }
 
@@ -34,8 +28,8 @@ class App extends Component {
     this.props.actions.toggleNavDrawer()
   }
 
-  handleChangeRoute (path) {
-    this.context.router.push(path)
+  handleMenuItemClick (menuItem) {
+    this.props.actions.clickMenuItem(menuItem)
   }
 
   render () {
@@ -46,8 +40,8 @@ class App extends Component {
           <AppBar>{layout.appName}</AppBar>
           <div style={{ flex: 1, overflowY: 'auto' }}>
             <List selectable ripple>
-              {this.menuItems.map((item, i) =>
-                <ListItem key={i} caption={item.name} leftIcon={item.icon} onClick={this.handleChangeRoute[i]} />
+              {layout.menuItems.map((item, i) =>
+                <ListItem key={i} caption={item.name} leftIcon={item.icon} onClick={this.handleMenuItemClick[i]} />
               )}
             </List>
           </div>

@@ -4,6 +4,10 @@ import { TOGGLE_NAV_DRAWER, SET_PAGE_TITLE } from '../constants/ActionTypes'
 const initialState = {
   appName: 'React App Boilerplate',
   pageTitle: 'Home',
+  menuItems: [
+    { name: 'Home', icon: 'home', path: '/' },
+    { name: 'About', icon: 'info', path: '/about' }
+  ],
   isNavDrawerActive: false
 }
 
