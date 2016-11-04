@@ -48,7 +48,7 @@ class App extends Component {
         </NavDrawer>
         <Panel>
           <AppBar>
-            <AppMenuButton icon="menu" inverse onClick={this.handleToggleNavDrawer} />
+            <AppMenuButton onClick={this.handleToggleNavDrawer} />
             {layout.pageTitle}
           </AppBar>
           <div style={{ flex: 1, overflowY: 'auto' }}>
