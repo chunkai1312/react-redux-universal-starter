@@ -9,7 +9,7 @@ module.exports = {
   devtool: 'cheap-module-eval-source-map',
   entry: [
     'webpack-hot-middleware/client',
-    './src/app/index'
+    './src/index'
   ],
   output: {
     path: path.join(__dirname, 'dist'),
@@ -50,7 +50,7 @@ module.exports = {
   postcss: [autoprefixer],
   sassLoader: {
     data: '@import "theme/_config.scss";',
-    includePaths: [path.resolve(__dirname, './src/app')]
+    includePaths: [path.resolve(__dirname, './src')]
   },
   plugins: [
     new webpack.optimize.OccurrenceOrderPlugin(),

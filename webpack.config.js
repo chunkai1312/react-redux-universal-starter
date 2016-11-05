@@ -9,7 +9,7 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin')
 module.exports = {
   devtool: 'cheap-module-source-map',
   entry: [
-    './src/app/index'
+    './src/index'
   ],
   output: {
     path: path.join(__dirname, 'dist'),
@@ -50,7 +50,7 @@ module.exports = {
   postcss: [autoprefixer],
   sassLoader: {
     data: '@import "theme/_config.scss";',
-    includePaths: [path.resolve(__dirname, './src/app')]
+    includePaths: [path.resolve(__dirname, './src')]
   },
   plugins: [
     new webpack.optimize.OccurrenceOrderPlugin(),
