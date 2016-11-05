@@ -15,7 +15,7 @@ const app = express()
 // -----------------------------------------------------------------------------
 if (app.get('env') === 'development') {
   const compiler = webpack(webpackDevConfig)
-  app.use(historyApiFallback({ verbose: true }))
+  app.use(historyApiFallback())
   app.use(webpackDevMiddleware(compiler, { noInfo: true, publicPath: webpackDevConfig.output.publicPath }))
   app.use(webpackHotMiddleware(compiler))
   app.set('appPath', path.join(config.root, 'src'))
