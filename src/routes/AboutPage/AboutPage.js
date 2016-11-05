@@ -1,16 +1,12 @@
 import React, { Component, PropTypes } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import * as actions from '../../actions/layout'
+import * as actions from '../../actions'
 
 class AboutPage extends Component {
   static propTypes = {
     layout: PropTypes.object.isRequired,
     actions: PropTypes.object.isRequired
-  }
-
-  componentWillMount () {
-    this.props.actions.setPageTitle('About')
   }
 
   render () {

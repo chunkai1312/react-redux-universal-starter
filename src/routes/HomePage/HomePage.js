@@ -2,18 +2,13 @@ import React, { Component, PropTypes } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { Counter } from '../../components'
-import * as layoutActions from '../../actions/layout'
-import * as counterActions from '../../actions/counter'
+import * as actions from '../../actions'
 
 class HomePage extends Component {
   static propTypes = {
     layout: PropTypes.object.isRequired,
     counter: PropTypes.number.isRequired,
     actions: PropTypes.object.isRequired
-  }
-
-  componentWillMount () {
-    this.props.actions.setPageTitle('Home')
   }
 
   render () {
@@ -37,7 +32,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  actions: bindActionCreators(Object.assign({}, layoutActions, counterActions), dispatch)
+  actions: bindActionCreators(actions, dispatch)
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomePage)
