@@ -8,19 +8,17 @@ import rootSaga from '../sagas'
 export default function configureStore (initialState) {
   const routeringMiddleware = routerMiddleware(browserHistory)
   const sagaMiddleware = createSagaMiddleware()
+  const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
   const store = createStore(
     rootReducer,
     initialState,
-    compose(
+    composeEnhancers(
       applyMiddleware(routeringMiddleware, sagaMiddleware),
-      window.devToolsExtension && window.devToolsExtension()
     )
   )
 
   sagaMiddleware.run(rootSaga)
-
-  if (window.devToolsExtension) window.devToolsExtension.updateStore(store)
 
   if (module.hot) {
     module.hot.accept('../reducers', () => {
