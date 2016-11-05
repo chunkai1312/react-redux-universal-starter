@@ -4,7 +4,6 @@ var path = require('path')
 var webpack = require('webpack')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 var autoprefixer = require('autoprefixer')
-var ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 module.exports = {
   devtool: 'cheap-module-eval-source-map',
@@ -33,7 +32,7 @@ module.exports = {
       },
       {
         test: /(\.scss|\.css)$/,
-        loader: ExtractTextPlugin.extract('style', 'css?sourceMap&modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!postcss!sass')
+        loader: 'style!css?sourceMap&modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!postcss!sass'
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
@@ -62,7 +61,6 @@ module.exports = {
         NODE_ENV: JSON.stringify('development')
       }
     }),
-    new ExtractTextPlugin('bundle.css', { allChunks: true }),
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: './src/index.html',
