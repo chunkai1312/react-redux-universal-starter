@@ -64,7 +64,8 @@ module.exports = {
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: './src/index.html',
-      inject: true
+      inject: true,
+      favicon: 'src/static/favicon.ico'
     })
   ],
   stats: { children: false }
