@@ -2,8 +2,9 @@ import React, { Component, PropTypes } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { NavDrawer, Panel, AppBar, List, ListItem } from 'react-toolbox'
-import { AppLayout, AppMenuButton } from '../components'
-import * as actions from '../actions/layout'
+import { AppLayout, AppMenuButton } from '../../components'
+import * as actions from '../../actions/layout'
+import style from './style.scss'
 
 class App extends Component {
   static contextTypes = {
@@ -38,22 +39,22 @@ class App extends Component {
       <AppLayout>
         <NavDrawer active={layout.isNavDrawerActive} permanentAt="md" onOverlayClick={this.handleToggleNavDrawer}>
           <AppBar>{layout.appName}</AppBar>
-          <div style={{ flex: 1, overflowY: 'auto' }}>
+          <nav className={style.menu}>
             <List selectable ripple>
               {layout.menuItems.map((item, i) =>
                 <ListItem key={i} caption={item.name} leftIcon={item.icon} onClick={this.handleMenuItemClick[i]} />
               )}
             </List>
-          </div>
+          </nav>
         </NavDrawer>
         <Panel>
           <AppBar>
             <AppMenuButton onClick={this.handleToggleNavDrawer} />
             {layout.pageTitle}
           </AppBar>
-          <div style={{ flex: 1, overflowY: 'auto' }}>
+          <section className={style.mainContent}>
             {children}
-          </div>
+          </section>
         </Panel>
       </AppLayout>
     )
