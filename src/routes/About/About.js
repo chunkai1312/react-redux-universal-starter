@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as actions from '../../actions'
+import style from './style.scss'
 
 class AboutPage extends Component {
   static propTypes = {
@@ -11,9 +12,9 @@ class AboutPage extends Component {
 
   render () {
     return (
-      <div style={{ padding: '2.4rem' }}>
+      <section className={style.about}>
         About
-      </div>
+      </section>
     )
   }
 }
