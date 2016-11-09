@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { Counter } from '../../components'
-import * as actions from '../../actions'
+import actions from '../../redux/actions'
 import style from './style.scss'
 
 class Home extends Component {

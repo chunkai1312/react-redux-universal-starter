@@ -1,7 +1,6 @@
 import { takeEvery, delay } from 'redux-saga'
 import { put, call } from 'redux-saga/effects'
-import * as actions from '../actions/counter'
-import { COUNTER_INCREMENT_ASYNC } from '../constants/ActionTypes'
+import { actionCreators as actions, actionTypes as types } from '../modules/counter'
 
 function * incrementAsync () {
   yield call(delay, 1000)
@@ -9,5 +8,5 @@ function * incrementAsync () {
 }
 
 export function * watchIncrementAsync () {
-  yield * takeEvery(COUNTER_INCREMENT_ASYNC, incrementAsync)
+  yield * takeEvery(types.COUNTER_INCREMENT_ASYNC, incrementAsync)
 }
