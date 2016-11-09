@@ -21,7 +21,7 @@ if (app.get('env') === 'development') {
   app.set('appPath', path.join(config.root, 'src'))
 }
 
-if (app.get('env') === 'production' || app.get('env') === 'test') {
+if (app.get('env') === 'production') {
   app.set('appPath', path.join(config.root, 'dist'))
 }
 
