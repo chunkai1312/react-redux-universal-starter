@@ -8,6 +8,7 @@ const webpackDevMiddleware = require('webpack-dev-middleware')
 const webpackHotMiddleware = require('webpack-hot-middleware')
 const webpackDevConfig = require('./webpack.dev.config')
 const config = require('./config')
+
 const app = express()
 
 //
@@ -18,11 +19,11 @@ if (app.get('env') === 'development') {
   app.use(historyApiFallback())
   app.use(webpackDevMiddleware(compiler, { noInfo: true, publicPath: webpackDevConfig.output.publicPath }))
   app.use(webpackHotMiddleware(compiler))
-  app.set('appPath', path.join(config.root, 'src'))
+  app.set('appPath', config.path.client)
 }
 
 if (app.get('env') === 'production') {
-  app.set('appPath', path.join(config.root, 'dist'))
+  app.set('appPath', config.path.dist)
 }
 
 app.use(express.static(app.get('appPath')))
@@ -38,17 +39,13 @@ app.get('*', (req, res) => {
 // Error handling
 // -----------------------------------------------------------------------------
 app.use((err, req, res, next) => {
-  console.log(err)
+  console.error(err)
   res.status(500).send('Internal Server Error')
 })
 
 //
 // Launch the server
 // -----------------------------------------------------------------------------
-app.listen(config.port, function (error) {
-  if (error) {
-    console.error(error)
-  } else {
-    console.info('==> 🌎  Listening on port %s. Open up http://localhost:%s/ in your browser.', config.port, config.port)
-  }
+app.listen(config.port, () => {
+  console.log('Express server listening on %d, in %s mode', config.port, app.get('env'))
 })
