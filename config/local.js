@@ -1,10 +1,16 @@
 'use strict'
 
 const path = require('path')
+const ip = require('ip')
 
 module.exports = {
   env: process.env.NODE_ENV || 'development',
   port: process.env.PORT || 8080,
-  ip: process.env.IP || '127.0.0.1',
-  root: path.normalize(`${__dirname}/..`)
+  ip: ip.address(),
+
+  path: {
+    root: path.resolve(__dirname, '..'),
+    client: path.resolve(__dirname, '..', 'src'),
+    dist: path.resolve(__dirname, '..', 'dist')
+  }
 }
