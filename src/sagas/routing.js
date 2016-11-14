@@ -1,7 +1,7 @@
 import { takeEvery } from 'redux-saga'
 import { put } from 'redux-saga/effects'
 import { LOCATION_CHANGE } from 'react-router-redux'
-import { actionCreators as actions } from '../modules/layout'
+import * as actions from '../actions'
 
 function * locationChange (action) {
   const path = {

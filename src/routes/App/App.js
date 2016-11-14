@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { NavDrawer, Panel, AppBar, List, ListItem } from 'react-toolbox'
 import { AppLayout, AppMenuButton } from '../../components'
-import actions from '../../redux/actions'
+import * as actions from '../../actions/layout'
 import style from './style.scss'
 
 class App extends Component {
