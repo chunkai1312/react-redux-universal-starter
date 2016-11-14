@@ -1,6 +1,6 @@
 import { createAction } from 'redux-actions'
-import { COUNTER_INCREMENT, COUNTER_DECREMENT, COUNTER_INCREMENT_ASYNC } from '../constants/ActionTypes'
+import * as types from '../constants/actionTypes'
 
-export const increment = createAction(COUNTER_INCREMENT)
-export const decrement = createAction(COUNTER_DECREMENT)
-export const incrementAsync = createAction(COUNTER_INCREMENT_ASYNC)
+export const increment = createAction(types.COUNTER_INCREMENT)
+export const decrement = createAction(types.COUNTER_DECREMENT)
+export const incrementAsync = createAction(types.COUNTER_INCREMENT_ASYNC)

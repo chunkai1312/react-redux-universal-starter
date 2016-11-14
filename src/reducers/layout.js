@@ -1,5 +1,5 @@
 import { handleActions } from 'redux-actions'
-import { TOGGLE_NAV_DRAWER, SET_PAGE_TITLE } from '../constants/ActionTypes'
+import * as types from '../constants/actionTypes'
 
 const initialState = {
   appName: 'React App Boilerplate',
@@ -12,6 +12,6 @@ const initialState = {
 }
 
 export default handleActions({
-  [TOGGLE_NAV_DRAWER]: (state, action) => ({ ...state, isNavDrawerActive: !state.isNavDrawerActive }),
-  [SET_PAGE_TITLE]: (state, action) => ({ ...state, pageTitle: action.payload })
+  [types.TOGGLE_NAV_DRAWER]: (state, action) => ({ ...state, isNavDrawerActive: !state.isNavDrawerActive }),
+  [types.SET_PAGE_TITLE]: (state, action) => ({ ...state, pageTitle: action.payload })
 }, initialState)

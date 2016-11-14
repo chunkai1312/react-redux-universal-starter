@@ -1,7 +1,7 @@
 import { takeEvery } from 'redux-saga'
 import { push } from 'react-router-redux'
 import { put } from 'redux-saga/effects'
-import { CLICK_MENU_ITEM } from '../constants/ActionTypes'
+import * as types from '../constants/actionTypes'
 
 function * clickMenuItem (action) {
   const menuItem = action.payload
@@ -9,5 +9,5 @@ function * clickMenuItem (action) {
 }
 
 export function * watchClickMenuItem () {
-  yield * takeEvery(CLICK_MENU_ITEM, clickMenuItem)
+  yield * takeEvery(types.CLICK_MENU_ITEM, clickMenuItem)
 }
