@@ -3,7 +3,7 @@ import { push } from 'react-router-redux'
 import { put } from 'redux-saga/effects'
 import * as types from '../constants/actionTypes'
 
-function * clickMenuItem (action) {
+export function * clickMenuItem (action) {
   const menuItem = action.payload
   yield put(push(menuItem.path))
 }

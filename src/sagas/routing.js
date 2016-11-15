@@ -3,7 +3,7 @@ import { put } from 'redux-saga/effects'
 import { LOCATION_CHANGE } from 'react-router-redux'
 import * as actions from '../actions'
 
-function * locationChange (action) {
+export function * locationChange (action) {
   const path = {
     '/': () => actions.setPageTitle('Home'),
     '/about': () => actions.setPageTitle('About')
