@@ -6,7 +6,7 @@ const historyApiFallback = require('connect-history-api-fallback')
 const webpack = require('webpack')
 const webpackDevMiddleware = require('webpack-dev-middleware')
 const webpackHotMiddleware = require('webpack-hot-middleware')
-const webpackDevConfig = require('./webpack.dev.config')
+const webpackDevConfig = require('./build/webpack.dev.config')
 const config = require('./config')
 
 const app = express()
