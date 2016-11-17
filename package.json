@@ -4,7 +4,7 @@
   "description": "React.js application boilerplate",
   "scripts": {
     "start": "cross-env NODE_ENV=production node server.js",
-    "test": "mocha src/**/*.spec.js --compilers js:babel-core/register --recursive",
+    "test": "mocha test/**/*.spec.js --compilers js:babel-core/register --recursive",
     "dev": "cross-env NODE_ENV=development nodemon server.js --ignore src",
     "lint": "eslint server.js config src",
     "build": "npm run clean && webpack --config webpack.config.js --progress",
