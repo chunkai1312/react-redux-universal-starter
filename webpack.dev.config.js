@@ -9,7 +9,7 @@ module.exports = {
   devtool: 'cheap-module-eval-source-map',
   entry: [
     'webpack-hot-middleware/client',
-    './src/index'
+    './src/index.js'
   ],
   output: {
     path: path.join(__dirname, 'dist'),
@@ -18,33 +18,15 @@ module.exports = {
   },
   resolve: {
     extensions: ['', '.scss', '.css', '.js', '.json'],
-    modulesDirectories: [
-      'node_modules',
-      path.resolve(__dirname, './node_modules')
-    ]
+    root: path.join(__dirname, 'src')
   },
   module: {
     loaders: [
-      {
-        test: /\.js$/,
-        loaders: ['react-hot', 'babel'],
-        exclude: /node_modules/
-      },
-      {
-        test: /(\.scss|\.css)$/,
-        loader: 'style!css?sourceMap&modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!postcss!sass'
-      },
-      {
-        test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
-        loader: 'url?limit=10000' },
-      {
-        test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
-        loader: 'url?limit=10000'
-      },
-      {
-        test: /\.json$/,
-        loader: 'json'
-      }
+      { test: /\.js$/, loaders: ['react-hot', 'babel'], exclude: /node_modules/ },
+      { test: /(\.scss|\.css)$/, loader: 'style!css?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!postcss!sass?sourceMap' },
+      { test: /\.(png|jpe?g|gif|svg)(\?.*)?$/, loader: 'url?limit=10000' },
+      { test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/, loader: 'url?limit=10000' },
+      { test: /\.json$/, loader: 'json' }
     ]
   },
   postcss: [autoprefixer],
