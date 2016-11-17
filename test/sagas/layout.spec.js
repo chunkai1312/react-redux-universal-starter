@@ -2,7 +2,7 @@ import 'babel-polyfill'
 import { expect } from 'chai'
 import { put } from 'redux-saga/effects'
 import { push } from 'react-router-redux'
-import { clickMenuItem } from './layout'
+import { clickMenuItem } from '../../src/sagas/layout'
 
 describe('Layout Sagas:', () => {
   describe('#clickMenuItem()', () => {

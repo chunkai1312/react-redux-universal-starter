@@ -1,6 +1,6 @@
 import { expect } from 'chai'
-import reducer, { initialState } from './layout'
-import * as types from '../constants/actionTypes'
+import reducer, { initialState } from '../../src/reducers/layout'
+import * as types from '../../src/constants/actionTypes'
 
 describe('Layout Reducer:', () => {
   let state

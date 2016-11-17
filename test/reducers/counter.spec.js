@@ -1,6 +1,6 @@
 import { expect } from 'chai'
-import reducer, { initialState } from './counter'
-import * as types from '../constants/actionTypes'
+import reducer, { initialState } from '../../src/reducers/counter'
+import * as types from '../../src/constants/actionTypes'
 
 describe('Counter Reducer:', () => {
   let state

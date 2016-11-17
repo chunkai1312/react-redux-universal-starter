@@ -2,8 +2,8 @@ import 'babel-polyfill'
 import { expect } from 'chai'
 import { delay } from 'redux-saga'
 import { put, call } from 'redux-saga/effects'
-import { incrementAsync } from './counter'
-import * as actions from '../actions'
+import { incrementAsync } from '../../src/sagas/counter'
+import * as actions from '../../src/actions'
 
 describe('Counter Sagas:', () => {
   describe('#incrementAsync()', () => {

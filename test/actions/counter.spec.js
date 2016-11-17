@@ -1,6 +1,6 @@
 import { expect } from 'chai'
-import * as actions from './counter'
-import * as types from '../constants/actionTypes'
+import * as actions from '../../src/actions/counter'
+import * as types from '../../src/constants/actionTypes'
 
 describe('Counter Actions:', () => {
   describe('#increment()', () => {

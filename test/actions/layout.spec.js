@@ -1,6 +1,6 @@
 import { expect } from 'chai'
-import * as actions from './layout'
-import * as types from '../constants/actionTypes'
+import * as actions from '../../src/actions/layout'
+import * as types from '../../src/constants/actionTypes'
 
 describe('Layout Actions:', () => {
   describe('#toggleNavDrawer()', () => {
