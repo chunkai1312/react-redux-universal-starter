@@ -1,7 +1,7 @@
 {
-  "name": "react-app-boilerplate",
+  "name": "react-redux-boilerplate",
   "version": "0.0.0",
-  "description": "React.js application boilerplate",
+  "description": "React/Redux application boilerplate",
   "scripts": {
     "start": "cross-env NODE_ENV=production node server.js",
     "test": "mocha test/**/*.spec.js --compilers js:babel-core/register --recursive",
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/chunkai1312/react-app-boilerplate.git"
+    "url": "https://github.com/chunkai1312/react-redux-boilerplate.git"
   },
   "license": "MIT",
   "dependencies": {
