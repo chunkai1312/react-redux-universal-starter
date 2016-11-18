@@ -1,6 +1,6 @@
-# react-app-boilerplate
+# react-redux-boilerplate
 
-> React application boilerplate
+> React/Redux application boilerplate
 
 ## Contains
 
