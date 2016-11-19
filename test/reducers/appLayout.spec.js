@@ -1,5 +1,5 @@
 import { expect } from 'chai'
-import reducer, { initialState } from '../../src/reducers/layout'
+import reducer, { initialState } from '../../src/reducers/appLayout'
 import * as types from '../../src/constants/actionTypes'
 
 describe('Layout Reducer:', () => {
@@ -19,10 +19,18 @@ describe('Layout Reducer:', () => {
 
   it('should handle the action type "TOGGLE_NAV_DRAWER"', () => {
     state = reducer(state, { type: types.TOGGLE_NAV_DRAWER })
-    expect(state.isNavDrawerActive).to.be.true
+    expect(state.navDrawer.active).to.be.true
 
     state = reducer(state, { type: types.TOGGLE_NAV_DRAWER })
-    expect(state.isNavDrawerActive).to.be.false
+    expect(state.navDrawer.active).to.be.false
+  })
+
+  it('should handle the action type "TOGGLE_BACK_BUTTON"', () => {
+    state = reducer(state, { type: types.TOGGLE_BACK_BUTTON })
+    expect(state.backButton.active).to.be.true
+
+    state = reducer(state, { type: types.TOGGLE_BACK_BUTTON })
+    expect(state.backButton.active).to.be.false
   })
 
   it('should handle the action type "SET_PAGE_TITLE"', () => {
