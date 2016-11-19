@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { AppBar } from 'react-toolbox/lib/app_bar'
 import { NavDrawer, Panel } from 'react-toolbox/lib/layout'
-import { AppLayout, AppTitleBar, AppNavMenu, AppNavMenuItem, AppMenuButton } from 'components/AppLayout'
+import { AppLayout, AppTitleBar, AppNavMenu, AppNavMenuItem, AppMenuButton, AppBackButton } from 'components/AppLayout'
 import * as actions from 'actions/appLayout'
 import style from './style.scss'
 
@@ -22,6 +22,10 @@ class App extends Component {
     this.props.actions.toggleNavDrawer()
   }
 
+  handleClickBackButton = () => {
+    this.props.actions.clickBackButton()
+  }
+
   handleMenuItemClick = (menuItem) => {
     this.props.actions.clickMenuItem(menuItem)
   }
@@ -34,7 +38,7 @@ class App extends Component {
     const { appLayout, children } = this.props
     return (
       <AppLayout>
-        <NavDrawer active={appLayout.isNavDrawerActive} permanentAt="md" onOverlayClick={this.handleToggleNavDrawer}>
+        <NavDrawer active={appLayout.navDrawer.active} permanentAt="md" onOverlayClick={this.handleToggleNavDrawer}>
           <AppTitleBar icon="static/logo.png" title={appLayout.appTitle} onIconClick={this.handleAppIconClick} />
           <AppNavMenu>
             {appLayout.navMenuItems.map((menuItem, i) =>
@@ -44,7 +48,7 @@ class App extends Component {
         </NavDrawer>
         <Panel>
           <AppBar>
-            <AppMenuButton onClick={this.handleToggleNavDrawer} />
+            {appLayout.backButton.active ? (<AppBackButton onClick={this.handleClickBackButton} />) : (<AppMenuButton onClick={this.handleToggleNavDrawer} />)}
             {appLayout.pageTitle}
           </AppBar>
           <section className={style.mainContent}>

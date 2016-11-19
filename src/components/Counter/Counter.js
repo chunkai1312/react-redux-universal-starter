@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react'
-import { Button } from 'react-toolbox'
+import { Button } from 'react-toolbox/lib/button'
 
 class Counter extends Component {
   static propTypes = {
@@ -9,34 +9,27 @@ class Counter extends Component {
     incrementAsync: PropTypes.func.isRequired
   }
 
-  constructor (props) {
-    super(props)
-    this.handleIncrement = this.handleIncrement.bind(this)
-    this.handleDecrement = this.handleDecrement.bind(this)
-    this.handleIncrementAsync = this.handleIncrementAsync.bind(this)
-  }
-
-  handleIncrement () {
+  handleIncrement = () => {
     this.props.increment()
   }
 
-  handleDecrement () {
+  handleDecrement = () => {
     this.props.decrement()
   }
 
-  handleIncrementAsync () {
+  handleIncrementAsync = () => {
     this.props.incrementAsync()
   }
 
   render () {
     const { counter } = this.props
     return (
-      <div>
+      <section>
         <p>Counter: { counter }</p>
         <Button icon="add" label="Increment" primary onClick={this.handleIncrement} />
         <Button icon="add" label="Decrement" accent onClick={this.handleDecrement} />
         <Button label="Increment Async" onClick={this.handleIncrementAsync} />
-      </div>
+      </section>
     )
   }
 }

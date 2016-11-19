@@ -1,8 +1,8 @@
 import React, { Component, PropTypes } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
+import { AppPage } from 'components/AppLayout'
 import * as actions from '../../actions'
-import style from './style.scss'
 
 class About extends Component {
   static propTypes = {
@@ -10,11 +10,19 @@ class About extends Component {
     actions: PropTypes.object.isRequired
   }
 
+  componentWillMount () {
+    this.props.actions.toggleBackButton()
+  }
+
+  componentWillUnmount () {
+    this.props.actions.toggleBackButton()
+  }
+
   render () {
     return (
-      <section className={style.about}>
+      <AppPage>
         About
-      </section>
+      </AppPage>
     )
   }
 }

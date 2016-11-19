@@ -8,11 +8,13 @@ export const initialState = {
     { title: 'Home', icon: 'home', path: '/' },
     { title: 'About', icon: 'info', path: '/about' }
   ],
-  isNavDrawerActive: false
+  navDrawer: { active: false },
+  backButton: { active: false }
 }
 
 const appLayout = handleActions({
-  [types.TOGGLE_NAV_DRAWER]: (state, action) => ({ ...state, isNavDrawerActive: !state.isNavDrawerActive }),
+  [types.TOGGLE_NAV_DRAWER]: (state, action) => ({ ...state, navDrawer: { active: !state.navDrawer.active } }),
+  [types.TOGGLE_BACK_BUTTON]: (state, action) => ({ ...state, backButton: { active: !state.backButton.active } }),
   [types.SET_PAGE_TITLE]: (state, action) => ({ ...state, pageTitle: action.payload })
 }, initialState)
 

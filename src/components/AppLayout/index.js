@@ -1,4 +1,5 @@
 export AppLayout from './AppLayout'
+export AppPage from './AppPage'
 export AppTitleBar from './AppTitleBar'
 export AppNavMenu from './AppNavMenu'
 export AppNavMenuItem from './AppNavMenuItem'

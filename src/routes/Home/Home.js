@@ -1,9 +1,9 @@
 import React, { Component, PropTypes } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { Counter } from '../../components'
-import * as actions from '../../actions'
-import style from './style.scss'
+import { AppPage } from 'components/AppLayout'
+import Counter from 'components/Counter'
+import * as actions from 'actions'
 
 class Home extends Component {
   static propTypes = {
@@ -15,14 +15,14 @@ class Home extends Component {
   render () {
     const { counter, actions } = this.props
     return (
-      <section className={style.home}>
+      <AppPage>
         <Counter
           counter={counter}
           increment={actions.increment}
           decrement={actions.decrement}
           incrementAsync={actions.incrementAsync}
         />
-      </section>
+      </AppPage>
     )
   }
 }
