@@ -36,7 +36,7 @@ $ npm start
 ### Testing
 
 ```
-$npm test
+$ npm test
 ```
 
 ## License
