@@ -4,9 +4,9 @@ import appLayout from './appLayout'
 import counter from './counter'
 
 const rootReducer = combineReducers({
+  routing,
   appLayout,
-  counter,
-  routing
+  counter
 })
 
 export default rootReducer

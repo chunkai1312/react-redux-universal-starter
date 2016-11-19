@@ -5,14 +5,14 @@ import createSagaMiddleware from 'redux-saga'
 import rootReducer from '../reducers'
 import rootSaga from '../sagas'
 
-export default function configureStore (initialState) {
+const configureStore = preloadedState => {
   const routeringMiddleware = routerMiddleware(browserHistory)
   const sagaMiddleware = createSagaMiddleware()
   const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
   const store = createStore(
     rootReducer,
-    initialState,
+    preloadedState,
     composeEnhancers(
       applyMiddleware(routeringMiddleware, sagaMiddleware),
     )
@@ -29,3 +29,5 @@ export default function configureStore (initialState) {
 
   return store
 }
+
+export default configureStore

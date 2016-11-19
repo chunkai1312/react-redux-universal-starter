@@ -11,7 +11,9 @@ export const initialState = {
   isNavDrawerActive: false
 }
 
-export default handleActions({
+const appLayout = handleActions({
   [types.TOGGLE_NAV_DRAWER]: (state, action) => ({ ...state, isNavDrawerActive: !state.isNavDrawerActive }),
   [types.SET_PAGE_TITLE]: (state, action) => ({ ...state, pageTitle: action.payload })
 }, initialState)
+
+export default appLayout
