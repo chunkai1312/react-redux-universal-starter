@@ -1,33 +1,5 @@
-import { createStore, applyMiddleware, compose } from 'redux'
-import { browserHistory } from 'react-router'
-import { routerMiddleware } from 'react-router-redux'
-import createSagaMiddleware from 'redux-saga'
-import rootReducer from '../reducers'
-import rootSaga from '../sagas'
-
-const configureStore = preloadedState => {
-  const routeringMiddleware = routerMiddleware(browserHistory)
-  const sagaMiddleware = createSagaMiddleware()
-  const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
-
-  const store = createStore(
-    rootReducer,
-    preloadedState,
-    composeEnhancers(
-      applyMiddleware(routeringMiddleware, sagaMiddleware),
-    )
-  )
-
-  sagaMiddleware.run(rootSaga)
-
-  if (module.hot) {
-    module.hot.accept('../reducers', () => {
-      const nextReducer = require('../reducers')
-      store.replaceReducer(nextReducer)
-    })
-  }
-
-  return store
+if (process.env.NODE_ENV === 'production') {
+  module.exports = require('./configureStore.prod')
+} else {
+  module.exports = require('./configureStore.dev')
 }
-
-export default configureStore
