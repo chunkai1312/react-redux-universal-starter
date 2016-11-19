@@ -1,0 +1,10 @@
+@import "~react-toolbox/lib/globals";
+
+.appTitleBar {  
+  .icon {
+    cursor: pointer;
+    background-color: transparent;
+    margin-left: -1.2 * $unit;
+    margin-right: 1.2 * $unit;
+  }
+}
