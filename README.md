@@ -10,7 +10,7 @@
 - [x] [React Router Redux](https://github.com/reactjs/react-router-redux)
 - [x] [React Saga](https://github.com/yelouafi/redux-saga)
 - [x] [React Toolbox](https://github.com/react-toolbox/react-toolbox)
-- [x] [Redux DevTools](https://github.com/gaearon/redux-devtools)
+- [x] [Redux DevTools Extension](https://github.com/zalmoxisus/redux-devtools-extension)
 
 ## Usage
 
@@ -31,6 +31,12 @@ $ npm run dev
 ```
 $ npm run build
 $ npm start
+```
+
+### Testing
+
+```
+$npm test
 ```
 
 ## License
