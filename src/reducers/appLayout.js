@@ -13,9 +13,9 @@ export const initialState = {
 }
 
 const appLayout = handleActions({
+  [types.SET_PAGE_TITLE]: (state, action) => ({ ...state, pageTitle: action.payload }),
   [types.TOGGLE_NAV_DRAWER]: (state, action) => ({ ...state, navDrawer: { active: !state.navDrawer.active } }),
-  [types.TOGGLE_BACK_BUTTON]: (state, action) => ({ ...state, backButton: { active: !state.backButton.active } }),
-  [types.SET_PAGE_TITLE]: (state, action) => ({ ...state, pageTitle: action.payload })
+  [types.TOGGLE_BACK_BUTTON]: (state, action) => ({ ...state, backButton: { active: !state.backButton.active } })
 }, initialState)
 
 export default appLayout
