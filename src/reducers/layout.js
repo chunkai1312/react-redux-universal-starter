@@ -2,7 +2,7 @@ import { handleActions } from 'redux-actions'
 import * as types from '../constants/actionTypes'
 
 export const initialState = {
-  appName: 'React App Boilerplate',
+  appName: 'React Redux Boilerplate',
   pageTitle: 'Home',
   menuItems: [
     { name: 'Home', icon: 'home', path: '/' },

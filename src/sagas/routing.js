@@ -1,5 +1,5 @@
 import { takeEvery } from 'redux-saga'
-import { put } from 'redux-saga/effects'
+import { fork, put } from 'redux-saga/effects'
 import { LOCATION_CHANGE } from 'react-router-redux'
 import * as actions from '../actions'
 
@@ -11,6 +11,12 @@ export function * locationChange (action) {
   yield put(path[action.payload.pathname]())
 }
 
-export function * watchLocationChange (state) {
+function * watchLocationChange (state) {
   yield * takeEvery(LOCATION_CHANGE, locationChange)
+}
+
+export default function * () {
+  yield [
+    fork(watchLocationChange)
+  ]
 }

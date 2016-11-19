@@ -1,12 +1,12 @@
 import { fork } from 'redux-saga/effects'
-import { watchLocationChange } from './routing'
-import { watchClickMenuItem } from './layout'
-import { watchIncrementAsync } from './counter'
+import routing from './routing'
+import layout from './layout'
+import counter from './counter'
 
 export default function * rootSaga () {
   yield [
-    fork(watchLocationChange),
-    fork(watchClickMenuItem),
-    fork(watchIncrementAsync)
+    fork(routing),
+    fork(layout),
+    fork(counter)
   ]
 }
