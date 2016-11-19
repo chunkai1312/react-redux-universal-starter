@@ -39,7 +39,7 @@ class App extends Component {
     return (
       <AppLayout>
         <NavDrawer active={appLayout.navDrawer.active} permanentAt="md" onOverlayClick={this.handleToggleNavDrawer}>
-          <AppTitleBar icon="static/logo.png" title={appLayout.appTitle} onIconClick={this.handleAppIconClick} />
+          <AppTitleBar icon={require('static/logo.png')} title={appLayout.appTitle} onIconClick={this.handleAppIconClick} />
           <AppNavMenu>
             {appLayout.navMenuItems.map((menuItem, i) =>
               <AppNavMenuItem key={i} menuItem={menuItem} onClick={this.handleMenuItemClick} />
