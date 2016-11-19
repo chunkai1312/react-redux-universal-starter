@@ -1,9 +1,10 @@
 import React, { Component, PropTypes } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { NavDrawer, Panel, AppBar, List, ListItem } from 'react-toolbox'
-import { AppLayout, AppMenuButton } from '../../components'
-import * as actions from '../../actions/layout'
+import { AppBar } from 'react-toolbox/lib/app_bar'
+import { NavDrawer, Panel } from 'react-toolbox/lib/layout'
+import { AppLayout, AppTitleBar, AppNavMenu, AppNavMenuItem, AppMenuButton } from 'components/AppLayout'
+import * as actions from 'actions/layout'
 import style from './style.scss'
 
 class App extends Component {
@@ -17,20 +18,16 @@ class App extends Component {
     children: PropTypes.node
   }
 
-  constructor (props) {
-    super(props)
-    this.handleToggleNavDrawer = this.handleToggleNavDrawer.bind(this)
-    props.layout.menuItems.forEach((menuItem, i) => {
-      this.handleMenuItemClick[i] = this.handleMenuItemClick.bind(this, menuItem)
-    })
-  }
-
-  handleToggleNavDrawer () {
+  handleToggleNavDrawer = () => {
     this.props.actions.toggleNavDrawer()
   }
 
-  handleMenuItemClick (menuItem) {
+  handleMenuItemClick = (menuItem) => {
     this.props.actions.clickMenuItem(menuItem)
+  }
+
+  handleAppIconClick = () => {
+    this.props.actions.backToHome()
   }
 
   render () {
@@ -38,14 +35,10 @@ class App extends Component {
     return (
       <AppLayout>
         <NavDrawer active={layout.isNavDrawerActive} permanentAt="md" onOverlayClick={this.handleToggleNavDrawer}>
-          <AppBar>{layout.appName}</AppBar>
-          <nav className={style.menu}>
-            <List selectable ripple>
-              {layout.menuItems.map((item, i) =>
-                <ListItem key={i} caption={item.name} leftIcon={item.icon} onClick={this.handleMenuItemClick[i]} />
-              )}
-            </List>
-          </nav>
+          <AppTitleBar icon="static/logo.png" title={layout.appName} onIconClick={this.handleAppIconClick} />
+          <AppNavMenu>
+            {layout.menuItems.map((menuItem, i) => <AppNavMenuItem key={i} menuItem={menuItem} onClick={this.handleMenuItemClick} />)}
+          </AppNavMenu>
         </NavDrawer>
         <Panel>
           <AppBar>
