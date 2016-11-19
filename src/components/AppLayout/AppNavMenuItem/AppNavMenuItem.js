@@ -15,7 +15,7 @@ class AppNavMenuItem extends Component {
     const { menuItem } = this.props
 
     return (
-      <ListItem caption={menuItem.name} leftIcon={menuItem.icon} onClick={this.handleClick} ripple selectable />
+      <ListItem caption={menuItem.title} leftIcon={menuItem.icon} onClick={this.handleClick} ripple selectable />
     )
   }
 }

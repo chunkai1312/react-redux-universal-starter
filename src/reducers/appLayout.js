@@ -2,11 +2,11 @@ import { handleActions } from 'redux-actions'
 import * as types from '../constants/actionTypes'
 
 export const initialState = {
-  appName: 'React Redux Boilerplate',
+  appTitle: 'React Redux Boilerplate',
   pageTitle: 'Home',
-  menuItems: [
-    { name: 'Home', icon: 'home', path: '/' },
-    { name: 'About', icon: 'info', path: '/about' }
+  navMenuItems: [
+    { title: 'Home', icon: 'home', path: '/' },
+    { title: 'About', icon: 'info', path: '/about' }
   ],
   isNavDrawerActive: false
 }

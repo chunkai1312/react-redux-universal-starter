@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { AppBar } from 'react-toolbox/lib/app_bar'
 import { NavDrawer, Panel } from 'react-toolbox/lib/layout'
 import { AppLayout, AppTitleBar, AppNavMenu, AppNavMenuItem, AppMenuButton } from 'components/AppLayout'
-import * as actions from 'actions/layout'
+import * as actions from 'actions/appLayout'
 import style from './style.scss'
 
 class App extends Component {
@@ -13,7 +13,7 @@ class App extends Component {
   }
 
   static propTypes = {
-    layout: PropTypes.object.isRequired,
+    appLayout: PropTypes.object.isRequired,
     actions: PropTypes.object.isRequired,
     children: PropTypes.node
   }
@@ -31,19 +31,21 @@ class App extends Component {
   }
 
   render () {
-    const { layout, children } = this.props
+    const { appLayout, children } = this.props
     return (
       <AppLayout>
-        <NavDrawer active={layout.isNavDrawerActive} permanentAt="md" onOverlayClick={this.handleToggleNavDrawer}>
-          <AppTitleBar icon="static/logo.png" title={layout.appName} onIconClick={this.handleAppIconClick} />
+        <NavDrawer active={appLayout.isNavDrawerActive} permanentAt="md" onOverlayClick={this.handleToggleNavDrawer}>
+          <AppTitleBar icon="static/logo.png" title={appLayout.appTitle} onIconClick={this.handleAppIconClick} />
           <AppNavMenu>
-            {layout.menuItems.map((menuItem, i) => <AppNavMenuItem key={i} menuItem={menuItem} onClick={this.handleMenuItemClick} />)}
+            {appLayout.navMenuItems.map((menuItem, i) =>
+              <AppNavMenuItem key={i} menuItem={menuItem} onClick={this.handleMenuItemClick} />
+            )}
           </AppNavMenu>
         </NavDrawer>
         <Panel>
           <AppBar>
             <AppMenuButton onClick={this.handleToggleNavDrawer} />
-            {layout.pageTitle}
+            {appLayout.pageTitle}
           </AppBar>
           <section className={style.mainContent}>
             {children}
@@ -55,7 +57,7 @@ class App extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  layout: state.layout
+  appLayout: state.appLayout
 })
 
 const mapDispatchToProps = (dispatch) => ({

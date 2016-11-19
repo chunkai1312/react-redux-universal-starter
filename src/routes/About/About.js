@@ -4,9 +4,9 @@ import { connect } from 'react-redux'
 import * as actions from '../../actions'
 import style from './style.scss'
 
-class AboutPage extends Component {
+class About extends Component {
   static propTypes = {
-    layout: PropTypes.object.isRequired,
+    appLayout: PropTypes.object.isRequired,
     actions: PropTypes.object.isRequired
   }
 
@@ -20,11 +20,11 @@ class AboutPage extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  layout: state.layout
+  appLayout: state.appLayout
 })
 
 const mapDispatchToProps = (dispatch) => ({
   actions: bindActionCreators(actions, dispatch)
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(AboutPage)
+export default connect(mapStateToProps, mapDispatchToProps)(About)

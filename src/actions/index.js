@@ -1,2 +1,2 @@
-export * from './layout'
+export * from './appLayout'
 export * from './counter.js'

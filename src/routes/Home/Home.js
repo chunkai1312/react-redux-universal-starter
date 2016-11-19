@@ -7,7 +7,7 @@ import style from './style.scss'
 
 class Home extends Component {
   static propTypes = {
-    layout: PropTypes.object.isRequired,
+    appLayout: PropTypes.object.isRequired,
     counter: PropTypes.number.isRequired,
     actions: PropTypes.object.isRequired
   }
@@ -28,7 +28,7 @@ class Home extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  layout: state.layout,
+  appLayout: state.appLayout,
   counter: state.counter
 })
 
