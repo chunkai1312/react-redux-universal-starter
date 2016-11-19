@@ -8,8 +8,8 @@ describe('Counter Actions:', () => {
       expect(actions.increment).to.be.a('function')
     })
 
-    it('should create an action with type "COUNTER_INCREMENT"', () => {
-      expect(actions.increment()).to.eql({ type: types.COUNTER_INCREMENT })
+    it('should create an action with type "INCREMENT"', () => {
+      expect(actions.increment()).to.eql({ type: types.INCREMENT })
     })
   })
 
@@ -18,8 +18,8 @@ describe('Counter Actions:', () => {
       expect(actions.decrement).to.be.a('function')
     })
 
-    it('should create an action with type "COUNTER_DECREMENT"', () => {
-      expect(actions.decrement()).to.eql({ type: types.COUNTER_DECREMENT })
+    it('should create an action with type "DECREMENT"', () => {
+      expect(actions.decrement()).to.eql({ type: types.DECREMENT })
     })
   })
 
@@ -28,8 +28,8 @@ describe('Counter Actions:', () => {
       expect(actions.incrementAsync).to.be.a('function')
     })
 
-    it('should create an action with type "COUNTER_INCREMENT_ASYNC"', () => {
-      expect(actions.incrementAsync()).to.eql({ type: types.COUNTER_INCREMENT_ASYNC })
+    it('should create an action with type "INCREMENT_ASYNC"', () => {
+      expect(actions.incrementAsync()).to.eql({ type: types.INCREMENT_ASYNC })
     })
   })
 })

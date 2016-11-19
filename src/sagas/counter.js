@@ -9,7 +9,7 @@ export function * incrementAsync () {
 }
 
 function * watchIncrementAsync () {
-  yield * takeEvery(types.COUNTER_INCREMENT_ASYNC, incrementAsync)
+  yield * takeEvery(types.INCREMENT_ASYNC, incrementAsync)
 }
 
 export default function * () {

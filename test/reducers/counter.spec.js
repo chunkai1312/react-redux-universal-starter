@@ -6,7 +6,7 @@ describe('Counter Reducer:', () => {
   let state
 
   beforeEach(() => {
-    state = reducer(undefined, { type: 'NOT_TYPE' })
+    state = reducer(undefined, { type: 'UNKNOWN' })
   })
 
   it('should be a function', () => {
@@ -17,13 +17,13 @@ describe('Counter Reducer:', () => {
     expect(state).to.eql(initialState)
   })
 
-  it('should handle the action type "COUNTER_INCREMENT"', () => {
-    state = reducer(state, { type: types.COUNTER_INCREMENT })
+  it('should handle the action type "INCREMENT"', () => {
+    state = reducer(state, { type: types.INCREMENT })
     expect(state).to.equal(initialState + 1)
   })
 
-  it('should handle the action type "COUNTER_DECREMENT"', () => {
-    state = reducer(state, { type: types.COUNTER_DECREMENT })
+  it('should handle the action type "DECREMENT"', () => {
+    state = reducer(state, { type: types.DECREMENT })
     expect(state).to.equal(initialState - 1)
   })
 })

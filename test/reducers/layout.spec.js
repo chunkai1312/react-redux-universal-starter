@@ -6,7 +6,7 @@ describe('Layout Reducer:', () => {
   let state
 
   beforeEach(() => {
-    state = reducer(undefined, { type: 'NOT_TYPE' })
+    state = reducer(undefined, { type: 'UNKNOWN' })
   })
 
   it('should be a function', () => {
