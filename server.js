@@ -2,6 +2,7 @@
 
 const path = require('path')
 const express = require('express')
+const proxy = require('http-proxy-middleware')
 const historyApiFallback = require('connect-history-api-fallback')
 const webpack = require('webpack')
 const webpackDevMiddleware = require('webpack-dev-middleware')
@@ -10,6 +11,16 @@ const webpackDevConfig = require('./build/webpack.dev.config')
 const config = require('./config')
 
 const app = express()
+
+//
+// HTTP proxy settings
+// -----------------------------------------------------------------------------
+Object.keys(config.proxyTable).forEach(context => {
+  const options = (typeof config.proxyTable[context] === 'string')
+    ? { target: config.proxyTable[context], changeOrigin: true }
+    : config.proxyTable[context]
+  app.use(proxy(context, options))
+})
 
 //
 // Express middlewares

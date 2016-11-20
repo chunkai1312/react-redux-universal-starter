@@ -12,5 +12,7 @@ module.exports = {
     root: path.resolve(__dirname, '..'),
     client: path.resolve(__dirname, '..', 'src'),
     dist: path.resolve(__dirname, '..', 'dist')
-  }
+  },
+
+  proxyTable: {}
 }
