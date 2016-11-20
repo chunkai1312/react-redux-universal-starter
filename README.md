@@ -26,10 +26,15 @@ $ npm install
 $ npm run dev
 ```
 
-### Running
+### Building
 
 ```
 $ npm run build
+```
+
+### Running
+
+```
 $ npm start
 ```
 
