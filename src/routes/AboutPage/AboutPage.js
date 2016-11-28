@@ -1,10 +1,10 @@
 import React, { Component, PropTypes } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { AppPage } from 'components/AppLayout'
+import { MainContent } from 'components/AppLayout'
 import * as actions from '../../actions'
 
-class About extends Component {
+class AboutPage extends Component {
   static propTypes = {
     appLayout: PropTypes.object.isRequired,
     actions: PropTypes.object.isRequired
@@ -20,9 +20,9 @@ class About extends Component {
 
   render () {
     return (
-      <AppPage>
+      <MainContent>
         About
-      </AppPage>
+      </MainContent>
     )
   }
 }
@@ -35,4 +35,4 @@ const mapDispatchToProps = (dispatch) => ({
   actions: bindActionCreators(actions, dispatch)
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(About)
+export default connect(mapStateToProps, mapDispatchToProps)(AboutPage)

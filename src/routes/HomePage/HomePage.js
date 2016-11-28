@@ -1,11 +1,11 @@
 import React, { Component, PropTypes } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { AppPage } from 'components/AppLayout'
+import { MainContent } from 'components/AppLayout'
 import Counter from 'components/Counter'
 import * as actions from 'actions'
 
-class Home extends Component {
+class HomePage extends Component {
   static propTypes = {
     appLayout: PropTypes.object.isRequired,
     counter: PropTypes.number.isRequired,
@@ -15,14 +15,14 @@ class Home extends Component {
   render () {
     const { counter, actions } = this.props
     return (
-      <AppPage>
+      <MainContent>
         <Counter
           counter={counter}
           increment={actions.increment}
           decrement={actions.decrement}
           incrementAsync={actions.incrementAsync}
         />
-      </AppPage>
+      </MainContent>
     )
   }
 }
@@ -36,4 +36,4 @@ const mapDispatchToProps = (dispatch) => ({
   actions: bindActionCreators(actions, dispatch)
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home)
+export default connect(mapStateToProps, mapDispatchToProps)(HomePage)
