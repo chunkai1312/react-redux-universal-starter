@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import { ListItem } from 'react-toolbox/lib/list'
 
-class AppNavMenuItem extends Component {
+class NavMenuItem extends Component {
   static propTypes = {
     menuItem: PropTypes.object.isRequired,
     onClick: PropTypes.func
@@ -20,4 +20,4 @@ class AppNavMenuItem extends Component {
   }
 }
 
-export default AppNavMenuItem
+export default NavMenuItem

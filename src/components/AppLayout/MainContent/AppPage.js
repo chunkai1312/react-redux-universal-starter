@@ -1,16 +1,16 @@
 import React, { PropTypes } from 'react'
 import style from './style.scss'
 
-const AppPage = ({ children }) => {
+const MainContent = ({ children }) => {
   return (
-    <section className={style.appPage}>
+    <section className={style.mainContent}>
       {children}
     </section>
   )
 }
 
-AppPage.propTypes = {
+MainContent.propTypes = {
   children: PropTypes.node.isRequired
 }
 
-export default AppPage
+export default MainContent

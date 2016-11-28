@@ -2,16 +2,16 @@ import React, { PropTypes } from 'react'
 import { List } from 'react-toolbox/lib/list'
 import style from './style.scss'
 
-const AppNavMenu = (props) => (
-  <nav className={style.appNavMenu}>
+const NavMenu = (props) => (
+  <nav className={style.navMenu}>
     <List {...props} ripple selectable>
       {props.children}
     </List>
   </nav>
 )
 
-AppNavMenu.propTypes = {
+NavMenu.propTypes = {
   children: PropTypes.node.isRequired
 }
 
-export default AppNavMenu
+export default NavMenu
