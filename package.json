@@ -1,7 +1,7 @@
 {
-  "name": "react-redux-boilerplate",
+  "name": "react-material-boilerplate",
   "version": "0.0.0",
-  "description": "React/Redux application boilerplate",
+  "description": "A React/Redux application boilerplate using material design",
   "scripts": {
     "start": "cross-env NODE_ENV=production node server.js",
     "test": "mocha test/**/*.spec.js --compilers js:babel-core/register --recursive",
