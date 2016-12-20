@@ -1,5 +1,5 @@
 {
-  "name": "react-material-boilerplate",
+  "name": "react-redux-boilerplate",
   "version": "0.0.0",
   "description": "A React/Redux application boilerplate using material design",
   "scripts": {
