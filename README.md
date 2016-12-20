@@ -1,4 +1,4 @@
-# react-material-boilerplate
+# react-redux-boilerplate
 
 > A React/Redux application boilerplate using material design
 
