@@ -6,7 +6,7 @@
     "start": "cross-env NODE_ENV=production node server.js",
     "test": "mocha test/**/*.spec.js --compilers js:babel-core/register --recursive",
     "dev": "cross-env NODE_ENV=development nodemon server.js --ignore src",
-    "build": "node build/build.js",
+    "build": "cross-env NODE_ENV=production node build/build.js",
     "lint": "eslint server.js build config src"
   },
   "repository": {
@@ -51,7 +51,7 @@
     "eslint-plugin-promise": "^3.3.1",
     "eslint-plugin-react": "^6.5.0",
     "eslint-plugin-standard": "^2.0.1",
-    "extract-text-webpack-plugin": "^1.0.1",
+    "extract-text-webpack-plugin": "beta",
     "file-loader": "^0.9.0",
     "html-webpack-plugin": "^2.24.1",
     "immutability-helper": "^2.0.0",
@@ -66,8 +66,8 @@
     "shelljs": "^0.7.5",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
-    "webpack": "^1.13.3",
-    "webpack-dev-middleware": "^1.8.4",
-    "webpack-hot-middleware": "^2.13.1"
+    "webpack": "^2.2.1",
+    "webpack-dev-middleware": "^1.10.0",
+    "webpack-hot-middleware": "^2.16.1"
   }
 }
