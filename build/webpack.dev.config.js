@@ -3,6 +3,7 @@
 const path = require('path')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const ProgressBarPlugin = require('progress-bar-webpack-plugin')
 const autoprefixer = require('autoprefixer')
 const config = require('../config')
 
@@ -76,6 +77,7 @@ module.exports = {
       template: path.join(config.path.client, 'index.html'),
       favicon: path.join(config.path.client, 'static/favicon.ico'),
       inject: true
-    })
+    }),
+    new ProgressBarPlugin({ summary: false })
   ]
 }
