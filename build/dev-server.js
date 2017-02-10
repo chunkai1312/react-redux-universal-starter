@@ -6,7 +6,7 @@ var webpackDevConfig = require('./webpack.dev.config')
 var config = require('../src/config')
 
 var compiler = webpack(webpackDevConfig)
-var port = config.port +1
+var port = config.port + 1
 
 var app = express()
 
