@@ -3,11 +3,16 @@
   "env": {
     "browser": true,
     "node": true,
-    "mocha": true,
-    "shelljs": true
+    "mocha": true
   },
   "extends": ["standard", "standard-react"],
   "rules": {
     "jsx-quotes": ["error", "prefer-double"]
+  },
+  "globals": {
+    "__SERVER__": true,
+    "__DISABLE_SSR__": true,
+    "__COOKIE__": true,
+    "webpackIsomorphicTools": true
   }
 }
