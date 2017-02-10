@@ -1,4 +1,5 @@
 node_modules
-npm-debug.log
 dist
+webpack-assets.json
+*.log
 .DS_Store
