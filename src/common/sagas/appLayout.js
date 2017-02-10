@@ -1,7 +1,7 @@
 import { takeEvery } from 'redux-saga'
 import { fork, put } from 'redux-saga/effects'
 import { push, goBack } from 'react-router-redux'
-import * as types from '../constants/actionTypes'
+import * as types from '../constants/ActionTypes'
 
 export function * clickMenuItem (action) {
   const menuItem = action.payload

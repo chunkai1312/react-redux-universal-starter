@@ -1,7 +1,8 @@
 import React, { Component, PropTypes } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { MainContent } from 'components/AppLayout'
+import Helmet from 'react-helmet'
+import { MainContent } from '../../components/AppLayout'
 import * as actions from '../../actions'
 
 class AboutPage extends Component {
@@ -10,7 +11,7 @@ class AboutPage extends Component {
     actions: PropTypes.object.isRequired
   }
 
-  componentWillMount () {
+  componentDidMount () {
     this.props.actions.toggleBackButton()
   }
 
@@ -21,6 +22,7 @@ class AboutPage extends Component {
   render () {
     return (
       <MainContent>
+        <Helmet title="About" />
         About
       </MainContent>
     )

@@ -1,9 +1,10 @@
 import React, { Component, PropTypes } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { MainContent } from 'components/AppLayout'
-import Counter from 'components/Counter'
-import * as actions from 'actions'
+import Helmet from 'react-helmet'
+import { MainContent } from '../../components/AppLayout'
+import Counter from '../../components/Counter'
+import * as actions from '../../actions'
 
 class HomePage extends Component {
   static propTypes = {
@@ -16,6 +17,7 @@ class HomePage extends Component {
     const { counter, actions } = this.props
     return (
       <MainContent>
+        <Helmet title="Home" />
         <Counter
           counter={counter}
           increment={actions.increment}

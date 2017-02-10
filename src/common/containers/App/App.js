@@ -1,10 +1,12 @@
 import React, { Component, PropTypes } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
+import Helmet from 'react-helmet'
 import { AppBar } from 'react-toolbox/lib/app_bar'
 import { NavDrawer, Panel } from 'react-toolbox/lib/layout'
-import { AppLayout, AppTitleBar, NavMenu, NavMenuItem, NavButton, BackButton } from 'components/AppLayout'
-import * as actions from 'actions/appLayout'
+import { AppLayout, AppTitleBar, NavMenu, NavMenuItem, NavButton, BackButton } from '../../components/AppLayout'
+import * as actions from '../../actions/appLayout'
+import config from '../../../config'
 import style from './style.scss'
 
 class App extends Component {
@@ -38,8 +40,9 @@ class App extends Component {
     const { appLayout, children } = this.props
     return (
       <AppLayout>
+        <Helmet {...config.app.head} />
         <NavDrawer active={appLayout.navDrawer.active} permanentAt="md" onOverlayClick={this.handleToggleNavDrawer}>
-          <AppTitleBar icon={require('static/logo.png')} title={appLayout.appTitle} onIconClick={this.handleAppIconClick} />
+          <AppTitleBar icon={require('./logo.png')} title={appLayout.appTitle} onIconClick={this.handleAppIconClick} />
           <NavMenu>
             {appLayout.navMenuItems.map((menuItem, i) =>
               <NavMenuItem key={i} menuItem={menuItem} onClick={this.handleMenuItemClick} />

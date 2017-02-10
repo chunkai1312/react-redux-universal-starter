@@ -1,5 +1,5 @@
 import { handleActions } from 'redux-actions'
-import * as types from '../constants/actionTypes'
+import * as types from '../constants/ActionTypes'
 
 export const initialState = {
   appTitle: 'React Redux Boilerplate',
