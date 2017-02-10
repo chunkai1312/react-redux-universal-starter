@@ -1,39 +1,39 @@
-'use strict'
+var path = require('path')
+var webpack = require('webpack')
+var autoprefixer = require('autoprefixer')
 
-const path = require('path')
-const webpack = require('webpack')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const ProgressBarPlugin = require('progress-bar-webpack-plugin')
-const autoprefixer = require('autoprefixer')
-const config = require('../config')
+var WebpackIsomorphicToolsPlugin = require('webpack-isomorphic-tools/plugin')
+
+var projectRootPath = path.resolve(__dirname, '../')
+var assetsPath = path.resolve(projectRootPath, './static/dist')
+
+var config = require('../src/config')
 
 module.exports = {
   devtool: 'cheap-module-eval-source-map',
-  context: config.path.client,
+  context: projectRootPath,
   entry: [
-    'webpack-hot-middleware/client',
-    'index.js'
+    'webpack-hot-middleware/client?path=http://localhost:3001/__webpack_hmr',
+    './src/client'
   ],
   output: {
-    path: config.path.dist,
-    filename: 'bundle.js',
-    publicPath: '/'
-  },
-  resolve: {
-    modules: [
-      config.path.client,
-      'node_modules'
-    ]
+    path: assetsPath,
+    filename: '[name]-[hash].js',
+    chunkFilename: '[name]-[chunkhash].js',
+    publicPath: 'http://' + config.host + ':' + (config.port + 1) + '/dist/'
   },
   module: {
     rules: [
       {
         test: /\.js$/,
-        use: 'babel-loader',
-        exclude: /node_modules/
+        loader: 'babel-loader',
+        exclude: /node_modules/,
+        query: {
+          presets: ['react-hmre']
+        }
       },
       {
-        test: /(\.scss|\.css)$/,
+        test: /\.css$/,
         use: [
           'style-loader',
           {
@@ -41,43 +41,69 @@ module.exports = {
             options: {
               modules: true,
               importLoaders: 1,
-              localIdentName: '[name]__[local]___[hash:base64:5]',
-              sourceMap: true
+              localIdentName: '[name]__[local]__[hash:base64:5]'
             }
           },
           {
             loader: 'postcss-loader',
             options: {
-              plugins: [autoprefixer]
+              plugins: [autoprefixer({ browsers: ['last 2 versions'] })]
+            }
+          },
+        ]
+      },
+      {
+        test: /\.scss$/,
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true,
+              importLoaders: 2,
+              localIdentName: '[name]__[local]__[hash:base64:5]'
+            }
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              plugins: [autoprefixer({ browsers: ['last 2 versions'] })]
             }
           },
           {
             loader: 'sass-loader',
             options: {
               data: '@import "theme/_config.scss";',
-              includePaths: [config.path.client],
-              sourceMap: true
+              includePaths: [path.join(projectRootPath, 'src')]
             }
           }
         ]
       },
-      { test: /\.(png|jpe?g|gif|svg)(\?.*)?$/, use: 'url-loader' },
-      { test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/, use: 'url-loader' }
+      {
+        test: /\.(jpeg|jpg|png|gif)$/,
+        loader: 'url-loader',
+        options: {
+          limit: 10240
+        }
+      },
+      {
+        test: /\.woff2?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        loader: 'url-loader',
+        options: {
+          limit: 10000
+        }
+      },
+      {
+        test: /\.(ttf|eot|svg)(\?[\s\S]+)?$/,
+        use: 'file-loader'
+      }
     ]
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: JSON.stringify('development')
-      }
+      __SERVER__: false
     }),
-    new HtmlWebpackPlugin({
-      filename: 'index.html',
-      template: path.join(config.path.client, 'index.html'),
-      favicon: path.join(config.path.client, 'static/favicon.ico'),
-      inject: true
-    }),
-    new ProgressBarPlugin({ summary: false })
+    new WebpackIsomorphicToolsPlugin(require('./webpack-isomorphic-tools')).development()
   ]
 }
