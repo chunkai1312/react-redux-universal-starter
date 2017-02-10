@@ -20,28 +20,16 @@
 $ npm install
 ```
 
-### Developing
+### Run for Development
 
 ```
 $ npm run dev
 ```
 
-### Building
-
-```
-$ npm run build
-```
-
-### Running
+### Run for Production
 
 ```
 $ npm start
-```
-
-### Testing
-
-```
-$ npm test
 ```
 
 ## License
