@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "description": "A React/Redux application boilerplate using material design",
   "scripts": {
-    "start": "npm run dev",
+    "start": "npm run prod",
     "clean": "rimraf dist static/dist",
     "build-server": "babel src -d dist --copy-files",
     "build-client": "webpack --config build/webpack.prod.config.js --progress",
