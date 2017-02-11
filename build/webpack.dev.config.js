@@ -47,7 +47,7 @@ module.exports = {
           {
             loader: 'postcss-loader',
             options: {
-              plugins: [autoprefixer({ browsers: ['last 2 versions'] })]
+              plugins: () => [ autoprefixer({ browsers: ['last 2 versions'] }) ]
             }
           }
         ]
@@ -67,7 +67,7 @@ module.exports = {
           {
             loader: 'postcss-loader',
             options: {
-              plugins: [autoprefixer({ browsers: ['last 2 versions'] })]
+              plugins: () => [ autoprefixer({ browsers: ['last 2 versions'] }) ]
             }
           },
           {
