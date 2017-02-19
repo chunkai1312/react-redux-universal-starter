@@ -1,4 +1,6 @@
 var webpack = require('webpack')
+var ExtractTextPlugin = require('extract-text-webpack-plugin')
+var autoprefixer = require('autoprefixer')
 var WebpackIsomorphicToolsPlugin = require('webpack-isomorphic-tools/plugin')
 var webpackIsomorphicToolsPlugin = new WebpackIsomorphicToolsPlugin(require('./webpack-isomorphic-tools'))
 var config = require('../src/config')
@@ -6,14 +8,13 @@ var config = require('../src/config')
 module.exports = {
   devtool: 'cheap-module-source-map',
   context: config.rootPath,
-  entry: './src/client.js',
+  entry: './dist/client.js',
   output: {
     path: config.assetsPath,
     filename: '[name]-[hash].js',
     chunkFilename: '[name]-[chunkhash].js',
     publicPath: '/dist/'
   },
-
   module: {
     rules: [
       {
@@ -22,6 +23,32 @@ module.exports = {
           'babel-loader'
         ],
         exclude: /node_modules/
+      },
+      {
+        test: /\.css$/,
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: [
+            {
+              loader: 'css-loader',
+              options: {
+                modules: true,
+                minimize: true,
+                sourceMap: true,
+                importLoaders: 1,
+                localIdentName: '[name]--[local]--[hash:base64:8]'
+              }
+            },
+            {
+              loader: 'postcss-loader',
+              options: {
+                plugins: function () {
+                  return [ autoprefixer({ browsers: 'last 2 versions' }) ]
+                }
+              }
+            }
+          ]
+        })
       },
       {
         test: webpackIsomorphicToolsPlugin.regular_expression('images'),
@@ -41,10 +68,19 @@ module.exports = {
       }
     ]
   },
-
   plugins: [
     new webpack.NoEmitOnErrorsPlugin(),
     new webpack.optimize.UglifyJsPlugin(),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'vendor',
+      minChunks: function (module) {
+        return module.context && module.context.indexOf('node_modules') !== -1
+      }
+    }),
+    new ExtractTextPlugin({
+      filename: '[name]-[chunkhash].css',
+      allChunks: true
+    }),
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: '"production"'

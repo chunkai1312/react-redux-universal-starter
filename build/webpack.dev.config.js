@@ -1,4 +1,5 @@
 var webpack = require('webpack')
+var autoprefixer = require('autoprefixer')
 var WebpackIsomorphicToolsPlugin = require('webpack-isomorphic-tools/plugin')
 var webpackIsomorphicToolsPlugin = new WebpackIsomorphicToolsPlugin(require('./webpack-isomorphic-tools'))
 var config = require('../src/config')
@@ -17,7 +18,6 @@ module.exports = {
     chunkFilename: '[name]-[chunkhash].js',
     publicPath: 'http://' + config.devServer.host + ':' + config.devServer.port + '/dist/'
   },
-
   module: {
     rules: [
       {
@@ -26,6 +26,29 @@ module.exports = {
           'babel-loader'
         ],
         exclude: /node_modules/
+      },
+      {
+        test: /\.css$/,
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true,
+              sourceMap: true,
+              importLoaders: 1,
+              localIdentName: '[name]--[local]--[hash:base64:8]'
+            }
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              plugins: function () {
+                return [ autoprefixer({ browsers: 'last 2 versions' }) ]
+              }
+            }
+          }
+        ]
       },
       {
         test: webpackIsomorphicToolsPlugin.regular_expression('images'),
@@ -45,10 +68,15 @@ module.exports = {
       }
     ]
   },
-
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'vendor',
+      minChunks: function (module) {
+        return module.context && module.context.indexOf('node_modules') !== -1
+      }
+    }),
     new webpack.DefinePlugin({
       __CLIENT__: true,
       __SERVER__: false,
