@@ -2,7 +2,8 @@ var path = require('path')
 
 module.exports = {
   host: process.env.HOST || 'localhost',
-  port: process.env.PORT || (process.env.NODE_ENV === 'production' ? 8080 : 3000),
+  port: process.env.PORT || 8080,
+
   rootPath: path.resolve(__dirname, '..'),
   assetsPath: path.resolve(__dirname, '../static/dist'),
 
@@ -22,7 +23,8 @@ module.exports = {
   },
 
   devServer: {
-    port: 1000
+    host: 'localhost',
+    port: 3000
   },
 
   proxyTable: {}
