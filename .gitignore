@@ -1,5 +1,6 @@
 node_modules
-dist
-webpack-assets.json
-*.log
+npm-debug.log
 .DS_Store
+dist
+*.swp
+webpack-assets.json

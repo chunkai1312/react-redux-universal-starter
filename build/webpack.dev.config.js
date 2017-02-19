@@ -1,36 +1,31 @@
-var path = require('path')
 var webpack = require('webpack')
 var autoprefixer = require('autoprefixer')
-
 var WebpackIsomorphicToolsPlugin = require('webpack-isomorphic-tools/plugin')
-
-var projectRootPath = path.resolve(__dirname, '../')
-var assetsPath = path.resolve(projectRootPath, './static/dist')
-
+var webpackIsomorphicToolsPlugin = new WebpackIsomorphicToolsPlugin(require('./webpack-isomorphic-tools'))
 var config = require('../src/config')
 
 module.exports = {
   devtool: 'cheap-module-eval-source-map',
-  context: projectRootPath,
+  context: config.rootPath,
   entry: [
-    'webpack-hot-middleware/client?path=http://localhost:3001/__webpack_hmr',
-    './src/client'
+    'react-hot-loader/patch',
+    'webpack-hot-middleware/client?path=http://' + config.devServer.host + ':' + config.devServer.port + '/__webpack_hmr',
+    './src/client.js'
   ],
   output: {
-    path: assetsPath,
+    path: config.assetsPath,
     filename: '[name]-[hash].js',
     chunkFilename: '[name]-[chunkhash].js',
-    publicPath: 'http://' + config.host + ':' + (config.port + 1) + '/dist/'
+    publicPath: 'http://' + config.devServer.host + ':' + config.devServer.port + '/dist/'
   },
   module: {
     rules: [
       {
-        test: /\.js$/,
-        loader: 'babel-loader',
-        exclude: /node_modules/,
-        query: {
-          presets: ['react-hmre']
-        }
+        test: /\.jsx?$/,
+        use: [
+          'babel-loader'
+        ],
+        exclude: /node_modules/
       },
       {
         test: /\.css$/,
@@ -40,70 +35,54 @@ module.exports = {
             loader: 'css-loader',
             options: {
               modules: true,
+              sourceMap: true,
               importLoaders: 1,
-              localIdentName: '[name]__[local]__[hash:base64:5]'
+              localIdentName: '[name]--[local]--[hash:base64:8]'
             }
           },
           {
             loader: 'postcss-loader',
             options: {
-              plugins: () => [ autoprefixer({ browsers: ['last 2 versions'] }) ]
+              plugins: function () {
+                return [ autoprefixer({ browsers: 'last 2 versions' }) ]
+              }
             }
           }
         ]
       },
       {
-        test: /\.scss$/,
-        use: [
-          'style-loader',
-          {
-            loader: 'css-loader',
-            options: {
-              modules: true,
-              importLoaders: 2,
-              localIdentName: '[name]__[local]__[hash:base64:5]'
-            }
-          },
-          {
-            loader: 'postcss-loader',
-            options: {
-              plugins: () => [ autoprefixer({ browsers: ['last 2 versions'] }) ]
-            }
-          },
-          {
-            loader: 'sass-loader',
-            options: {
-              data: '@import "theme/_config.scss";',
-              includePaths: [path.join(projectRootPath, 'src')]
-            }
-          }
-        ]
-      },
-      {
-        test: /\.(jpeg|jpg|png|gif)$/,
+        test: webpackIsomorphicToolsPlugin.regular_expression('images'),
         loader: 'url-loader',
-        options: {
-          limit: 10240
+        query: {
+          limit: 10000,
+          name: 'img/[name].[hash:7].[ext]'
         }
       },
       {
-        test: /\.woff2?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        test: webpackIsomorphicToolsPlugin.regular_expression('fonts'),
         loader: 'url-loader',
-        options: {
-          limit: 10000
+        query: {
+          limit: 10000,
+          name: 'fonts/[name].[hash:7].[ext]'
         }
-      },
-      {
-        test: /\.(ttf|eot|svg)(\?[\s\S]+)?$/,
-        use: 'file-loader'
       }
     ]
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.DefinePlugin({
-      __SERVER__: false
+    new webpack.NoEmitOnErrorsPlugin(),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'vendor',
+      minChunks: function (module) {
+        return module.context && module.context.indexOf('node_modules') !== -1
+      }
     }),
-    new WebpackIsomorphicToolsPlugin(require('./webpack-isomorphic-tools')).development()
+    new webpack.DefinePlugin({
+      __CLIENT__: true,
+      __SERVER__: false,
+      __DEVELOPMENT__: true,
+      __DEVTOOLS__: true  // <-------- DISABLE redux-devtools HERE
+    }),
+    webpackIsomorphicToolsPlugin.development()
   ]
 }

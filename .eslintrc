@@ -10,9 +10,11 @@
     "jsx-quotes": ["error", "prefer-double"]
   },
   "globals": {
-    "__SERVER__": true,
+    "__CLIENT__": true,
+    "__SERVER__": true,    
     "__DISABLE_SSR__": true,
-    "__COOKIE__": true,
+    "__DEVELOPMENT__": true,
+    "__DEVTOOLS__": true,
     "webpackIsomorphicTools": true
   }
 }
