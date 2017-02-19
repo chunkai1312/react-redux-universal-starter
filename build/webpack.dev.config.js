@@ -8,14 +8,14 @@ module.exports = {
   context: config.rootPath,
   entry: [
     'react-hot-loader/patch',
-    'webpack-hot-middleware/client?path=http://localhost:3001/__webpack_hmr',
+    'webpack-hot-middleware/client?path=http://' + config.devServer.host + ':' + config.devServer.port + '/__webpack_hmr',
     './src/client.js'
   ],
   output: {
     path: config.assetsPath,
     filename: '[name]-[hash].js',
     chunkFilename: '[name]-[chunkhash].js',
-    publicPath: 'http://localhost:3001/dist/'
+    publicPath: 'http://' + config.devServer.host + ':' + config.devServer.port + '/dist/'
   },
 
   module: {
