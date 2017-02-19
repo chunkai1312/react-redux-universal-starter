@@ -1,10 +1,9 @@
-var path = require('path')
 var webpack = require('webpack')
 var express = require('express')
 var webpackDevMiddleware = require('webpack-dev-middleware')
 var webpackHotMiddleware = require('webpack-hot-middleware')
 var webpackDevConfig = require('./webpack.dev.config')
-var port = require('../src/config').port + 1
+var port = require('../src/config').devServer.port
 
 var app = express()
 var compiler = webpack(webpackDevConfig)
