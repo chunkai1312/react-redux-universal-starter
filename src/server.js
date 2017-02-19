@@ -11,7 +11,7 @@ import { syncHistoryWithStore } from 'react-router-redux'
 import configureStore from './store/configureStore'
 import getRoutes from './routes'
 import Html from './utils/Html'
-import { port, proxyTable } from './config'
+import { port, rootPath, proxyTable } from './config'
 // import Root from './containers/Root'
 
 const app = express()
@@ -24,8 +24,8 @@ Object.keys(proxyTable).forEach(context => {
 })
 
 app.use(compression())
-app.use(favicon(path.resolve(__dirname, '../static/favicon.ico')))
-app.use(express.static(path.resolve(__dirname, '../static')))
+app.use(favicon(path.join(rootPath, 'static/favicon.ico')))
+app.use(express.static(path.join(rootPath, 'static')))
 
 app.use((req, res) => {
   if (__DEVELOPMENT__) webpackIsomorphicTools.refresh()
