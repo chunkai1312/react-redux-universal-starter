@@ -1,5 +1,6 @@
 var webpack = require('webpack')
 var WebpackIsomorphicToolsPlugin = require('webpack-isomorphic-tools/plugin')
+var webpackIsomorphicToolsPlugin = new WebpackIsomorphicToolsPlugin(require('./webpack-isomorphic-tools'))
 var config = require('../src/config')
 
 module.exports = {
@@ -14,7 +15,7 @@ module.exports = {
     path: config.assetsPath,
     filename: '[name]-[hash].js',
     chunkFilename: '[name]-[chunkhash].js',
-    publicPath: 'http://' + config.host + ':' + (config.port + 1) + '/dist/'
+    publicPath: 'http://localhost:3001/dist/'
   },
 
   module: {
@@ -25,6 +26,22 @@ module.exports = {
           'babel-loader'
         ],
         exclude: /node_modules/
+      },
+      {
+        test: webpackIsomorphicToolsPlugin.regular_expression('images'),
+        loader: 'url-loader',
+        query: {
+          limit: 10000,
+          name: 'img/[name].[hash:7].[ext]'
+        }
+      },
+      {
+        test: webpackIsomorphicToolsPlugin.regular_expression('fonts'),
+        loader: 'url-loader',
+        query: {
+          limit: 10000,
+          name: 'fonts/[name].[hash:7].[ext]'
+        }
       }
     ]
   },
@@ -38,7 +55,6 @@ module.exports = {
       __DEVELOPMENT__: true,
       __DEVTOOLS__: true  // <-------- DISABLE redux-devtools HERE
     }),
-
-    new WebpackIsomorphicToolsPlugin(require('./webpack-isomorphic-tools')).development()
+    webpackIsomorphicToolsPlugin.development()
   ]
 }
