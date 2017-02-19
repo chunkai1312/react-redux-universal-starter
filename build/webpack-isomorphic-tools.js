@@ -1,8 +1,8 @@
 var WebpackIsomorphicToolsPlugin = require('webpack-isomorphic-tools/plugin')
 
-var config = {
+module.exports = {
   assets: {
-    images: {extensions: ['png']},
+    images: { extensions: ['png'] },
     style_modules: {
       extensions: ['css', 'scss'],
       filter: function (module, regex, options, log) {
@@ -29,5 +29,3 @@ var config = {
     }
   }
 }
-
-module.exports = config
