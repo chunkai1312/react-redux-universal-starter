@@ -20,14 +20,13 @@
     "url": "https://github.com/chunkai1312/universal-react-redux-starter-kit.git"
   },
   "keywords": [
+    "universal",
+    "isomorphic",
     "react",
     "reactjs",
+    "redux",
     "boilerplate",
-    "hot",
-    "reload",
-    "hmr",
-    "live",
-    "edit",
+    "starter",
     "webpack"
   ],
   "author": "Chun-Kai Wang <chunkai1312@gmail.com>",
