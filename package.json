@@ -39,6 +39,8 @@
     "compression": "^1.6.2",
     "express": "^4.14.1",
     "http-proxy-middleware": "^0.17.3",
+    "postcss": "^5.2.15",
+    "postcss-cssnext": "^2.9.0",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-helmet": "^4.0.0",
