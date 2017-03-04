@@ -1,6 +1,5 @@
 var webpack = require('webpack')
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
-var autoprefixer = require('autoprefixer')
 var WebpackIsomorphicToolsPlugin = require('webpack-isomorphic-tools/plugin')
 var webpackIsomorphicToolsPlugin = new WebpackIsomorphicToolsPlugin(require('./webpack-isomorphic-tools'))
 var config = require('../src/config')
@@ -43,7 +42,7 @@ module.exports = {
               loader: 'postcss-loader',
               options: {
                 plugins: function () {
-                  return [ autoprefixer({ browsers: 'last 2 versions' }) ]
+                  return [ require('postcss-cssnext') ]
                 }
               }
             }
