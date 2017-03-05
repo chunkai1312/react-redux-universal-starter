@@ -43,7 +43,14 @@ module.exports = {
             loader: 'postcss-loader',
             options: {
               plugins: function () {
-                return [ require('postcss-cssnext') ]
+                return [
+                  require('postcss-import')({
+                    root: __dirname
+                  }),
+                  require('postcss-mixins'),
+                  require('postcss-each'),
+                  require('postcss-cssnext')
+                ]
               }
             }
           }
