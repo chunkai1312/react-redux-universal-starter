@@ -5,14 +5,13 @@ import favicon from 'serve-favicon'
 import compression from 'compression'
 import React from 'react'
 import { renderToString } from 'react-dom/server'
-import { Provider } from 'react-redux'
-import { createMemoryHistory, match, RouterContext } from 'react-router'
+import { createMemoryHistory, match } from 'react-router'
 import { syncHistoryWithStore } from 'react-router-redux'
 import configureStore from './store/configureStore'
 import getRoutes from './routes'
 import Html from './utils/Html'
+import Root from './containers/Root'
 import { port, rootPath, proxyTable } from './config'
-// import Root from './containers/Root'
 
 const app = express()
 
@@ -39,9 +38,9 @@ app.use((req, res) => {
   const assets = webpackIsomorphicTools.assets()
 
   const hydrateOnClient = () => {
-    const htmlComponent = <Html assets={assets} store={store} />
-    const renderedDomString = renderToString(htmlComponent)
-    res.send(`<!doctype html>\n ${renderedDomString}`)
+    const html = <Html assets={assets} store={store} />
+    const renderedDomString = renderToString(html)
+    res.send(`<!doctype html>${renderedDomString}`)
   }
 
   if (__DISABLE_SSR__) {
@@ -57,14 +56,10 @@ app.use((req, res) => {
     } else if (redirectLocation) {
       res.redirect(redirectLocation.pathname + redirectLocation.search)
     } else if (renderProps) {
-      const component = (
-        <Provider store={store}>
-          <RouterContext {...renderProps} />
-        </Provider>
-      )
-      res.status(200).send('<!doctype html>\n' +
-        renderToString(<Html assets={assets} component={component} store={store} />)
-      )
+      const component = <Root store={store} history={memoryHistory} renderProps={renderProps} />
+      const html = <Html assets={assets} store={store} component={component} />
+      const renderedDomString = renderToString(html)
+      res.status(200).send(`<!doctype html>${renderedDomString}`)
     } else {
       res.status(404).send('Not found')
     }
