@@ -7,12 +7,13 @@ import getRoutes from '../../routes'
 class Root extends Component {
   render () {
     const { store, history, renderProps } = this.props
+    const routes = getRoutes(store)
     return (
       <AppContainer>
         <Provider store={store}>
           { __SERVER__
             ? <RouterContext {...renderProps} />
-            : <Router key={Math.random()} history={history} routes={getRoutes()} />
+            : <Router key={Math.random()} history={history} routes={routes} />
           }
         </Provider>
       </AppContainer>
