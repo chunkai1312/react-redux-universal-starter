@@ -12,7 +12,7 @@
 - [x] [Babel](https://babeljs.io/)
 - [x] [CSS modules](https://github.com/outpunk/postcss-modules)
 - [x] [PostCSS](https://github.com/postcss/postcss)
-- [x] [Autoprefixer](https://github.com/postcss/autoprefixer)
+- [x] [cssnext](http://cssnext.io)
 - [x] [Redux DevTools Extension](https://github.com/zalmoxisus/redux-devtools-extension)
 
 ## Usage
