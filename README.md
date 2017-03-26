@@ -1,4 +1,6 @@
-# universal-react-redux-starter-kit [![JavaScript Style Guide][standardjs-image]][standardjs-url]
+# universal-react-redux-starter-kit
+
+[![JavaScript Style Guide][standardjs-image]][standardjs-url]
 
 > A starter kit for building universal React/Redux apps
 
