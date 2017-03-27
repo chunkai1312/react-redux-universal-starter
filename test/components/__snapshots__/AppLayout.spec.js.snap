@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<AboutPage /> should render correctly 1`] = `
+<div
+  className="appLayout"
+>
+  <HelmetWrapper
+    meta={
+      Array [
+        Object {
+          "content": "A starter kit for building universal React/Redux apps",
+          "name": "description",
+        },
+        Object {
+          "charset": "utf-8",
+        },
+      ]
+    }
+    titleTemplate="%s | Universal React Redux Starter Kit"
+  />
+  <div
+    className="appHeader"
+  >
+    <img
+      alt="logo"
+      className="appLogo"
+      src="test-file-stub"
+    />
+    <h2>
+      Welcome to React
+    </h2>
+  </div>
+  <p
+    className="App-intro"
+  >
+    <Link
+      onlyActiveOnIndex={false}
+      style={Object {}}
+      to="/"
+    >
+      Home
+    </Link>
+     
+    <Link
+      onlyActiveOnIndex={false}
+      style={Object {}}
+      to="/about"
+    >
+      About
+    </Link>
+  </p>
+</div>
+`;
