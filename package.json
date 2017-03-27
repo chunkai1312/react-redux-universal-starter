@@ -78,6 +78,7 @@
     "eslint-plugin-standard": "^2.0.1",
     "extract-text-webpack-plugin": "^2.0.0",
     "file-loader": "^0.10.0",
+    "identity-obj-proxy": "^3.0.0",
     "jest": "^19.0.2",
     "nodemon": "^1.11.0",
     "postcss-each": "^0.9.3",
