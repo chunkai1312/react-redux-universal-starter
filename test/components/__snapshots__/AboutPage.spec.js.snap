@@ -3,6 +3,7 @@
 exports[`<AboutPage /> should render correctly 1`] = `
 <div>
   <HelmetWrapper
+    encodeSpecialCharacters={true}
     title="About"
   />
   About

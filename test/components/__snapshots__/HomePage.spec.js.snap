@@ -3,6 +3,7 @@
 exports[`<HomePage /> should render correctly 1`] = `
 <div>
   <HelmetWrapper
+    encodeSpecialCharacters={true}
     title="Home"
   />
   Home

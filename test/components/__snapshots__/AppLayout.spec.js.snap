@@ -5,6 +5,7 @@ exports[`<AboutPage /> should render correctly 1`] = `
   className="appLayout"
 >
   <HelmetWrapper
+    encodeSpecialCharacters={true}
     meta={
       Array [
         Object {
