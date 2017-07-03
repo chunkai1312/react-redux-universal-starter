@@ -38,6 +38,7 @@
   "homepage": "https://github.com/chunkai1312/universal-react-redux-starter-kit",
   "dependencies": {
     "compression": "^1.6.2",
+    "dotenv": "^4.0.0",
     "express": "^4.14.1",
     "http-proxy-middleware": "^0.17.3",
     "postcss": "^5.2.15",
