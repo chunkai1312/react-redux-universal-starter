@@ -5,12 +5,12 @@ import Helmet from 'react-helmet'
 import { Link } from 'react-router'
 import AppLayout from '../../src/components/AppLayout'
 
-describe('<AboutPage />', () => {
-  function setup () {
-    const wrapper = shallow(<AppLayout />)
-    return { wrapper }
-  }
+function setup () {
+  const wrapper = shallow(<AppLayout />)
+  return { wrapper }
+}
 
+describe('<AppLayout />', () => {
   it('should render a <Helmet /> component', () => {
     const { wrapper } = setup()
     expect(wrapper.find(Helmet)).toHaveLength(1)
