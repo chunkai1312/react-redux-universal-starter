@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 
+require('dotenv').config()
+
 var path = require('path')
 var WebpackIsomorphicTools = require('webpack-isomorphic-tools')
 var rootPath = path.resolve(__dirname, '..')
