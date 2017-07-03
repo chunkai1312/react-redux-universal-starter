@@ -4,12 +4,12 @@ import toJson from 'enzyme-to-json'
 import Helmet from 'react-helmet'
 import AboutPage from '../../src/components/AboutPage'
 
-describe('<AboutPage />', () => {
-  function setup () {
-    const wrapper = shallow(<AboutPage />)
-    return { wrapper }
-  }
+function setup () {
+  const wrapper = shallow(<AboutPage />)
+  return { wrapper }
+}
 
+describe('<AboutPage />', () => {
   it('should render a <Helmet /> component', () => {
     const { wrapper } = setup()
     expect(wrapper.find(Helmet)).toHaveLength(1)
