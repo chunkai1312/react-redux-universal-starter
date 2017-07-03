@@ -10,7 +10,8 @@ var compiler = webpack(webpackDevConfig)
 
 app.use(webpackDevMiddleware(compiler, {
   noInfo: true,
-  publicPath: webpackDevConfig.output.publicPath
+  publicPath: webpackDevConfig.output.publicPath,
+  headers: { 'Access-Control-Allow-Origin': '*' }
 }))
 
 app.use(webpackHotMiddleware(compiler))
