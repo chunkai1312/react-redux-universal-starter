@@ -11,7 +11,7 @@
     "build:server": "babel src -d dist --copy-files",
     "build:client": "webpack --config build/webpack.prod.config.js --progress",
     "build:watch": "node build/dev-server.js",
-    "test": "cross-env NODE_ENV=test jest --config .jestrc --forceExit",
+    "test": "cross-env NODE_ENV=test jest",
     "test:coverage": "npm test -- --coverage",
     "test:watch": "npm test -- --watch",
     "lint": "eslint src"
