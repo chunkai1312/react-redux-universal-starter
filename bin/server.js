@@ -2,9 +2,9 @@
 
 require('dotenv').config()
 
-var path = require('path')
-var WebpackIsomorphicTools = require('webpack-isomorphic-tools')
-var rootPath = path.resolve(__dirname, '..')
+const path = require('path')
+const WebpackIsomorphicTools = require('webpack-isomorphic-tools')
+const rootPath = path.resolve(__dirname, '..')
 
 /**
  * Define isomorphic constants.

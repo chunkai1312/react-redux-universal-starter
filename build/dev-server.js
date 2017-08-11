@@ -1,12 +1,12 @@
-var webpack = require('webpack')
-var express = require('express')
-var webpackDevMiddleware = require('webpack-dev-middleware')
-var webpackHotMiddleware = require('webpack-hot-middleware')
-var webpackDevConfig = require('./webpack.dev.config')
-var port = require('../src/config').devServer.port
+const webpack = require('webpack')
+const express = require('express')
+const webpackDevMiddleware = require('webpack-dev-middleware')
+const webpackHotMiddleware = require('webpack-hot-middleware')
+const webpackDevConfig = require('./webpack.dev.config')
+const port = require('../src/config').devServer.port
 
-var app = express()
-var compiler = webpack(webpackDevConfig)
+const app = express()
+const compiler = webpack(webpackDevConfig)
 
 app.use(webpackDevMiddleware(compiler, {
   noInfo: true,
